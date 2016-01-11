@@ -1,4 +1,4 @@
-﻿var canvas = document.getElementById("mainCanvas");
+﻿var canvas = document.getElementById("main-canvas");
 
 // Create a circle shaped path with its center at the center
 // of the view and a radius of 30:

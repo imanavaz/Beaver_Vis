@@ -5,46 +5,59 @@
     <meta charset="utf-8" />
 
     <!--Styles-->
-    <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="Styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/handsontable.full.css" />
     
     <!--API and Libraries-->
     <script type="text/javascript" src="Lib/tabletop.js"></script>
     <script type="text/javascript" src="Lib/paper-full.js"></script>
-    
+    <script type="text/javascript" src="Lib/handsontable.full.js"></script>
     
     <script type="text/javascript" src="Scripts/datagridlogic.js" ></script>
 
 </head>
 <body>
 
-    <!--Vis control panel-->
-    <div id="control-panel">
-        <br /><br />
+    <div id="wrapper">
 
-        <b>Trajecctories:</b><br />
-        <select id="trajectory-list">
-            <option selected disabled>Choose ...</option>
-        </select>
+        <!--Vis control panel-->
+        <div id="control-panel">
+            <br /><br />
 
-        <br /><br />
+            <b>Trajecctories:</b><br />
+            <select id="trajectory-list">
+                <option selected disabled>Choose ...</option>
+            </select>
 
-        <b>Travel mode: </b>
-        <select id="mode">
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT">Transit</option>
-        </select>
+            <br /><br />
 
-        <br />
+            <b>Travel mode: </b>
+            <select id="mode">
+                <option value="DRIVING">Driving</option>
+                <option value="WALKING">Walking</option>
+                <option value="BICYCLING">Bicycling</option>
+                <option value="TRANSIT">Transit</option>
+            </select>
+
+            <br />
+
+        </div>
+
+
+        <!--Canvas-->
+        <script type="text/paperscript" src="Scripts/canvaslogic.js" canvas="mainCanvas">
+        </script>
+
+        <div id="drawing-area">
+            <canvas id="main-canvas" resize></canvas>
+        </div>
 
     </div>
-
 
     <!--Data panel-->
     <div id="data-panel">
         
-        <div id="myGrid" style="width:100%;height:400px;"></div>
+        <div id="myGrid" style="width:100%;height:400px;" class="dataTable"></div>
         
         <script type="text/javascript">
             window.onload = function () { init() };
@@ -60,8 +73,23 @@
             }
 
             function showInfo(data, tabletop) {
-                alert("Successfully processed!")
-                console.log(data);
+                //alert("Successfully processed!")
+                //console.log(data);
+
+                container = document.querySelector('#myGrid');
+
+                var hot = new Handsontable(container, {
+                    data: data,
+                    startRows: 5,
+                    startCols: 5,
+                    minSpareCols: 10,
+                    //always keep at least 1 spare row at the right
+                    minSpareRows: 1,
+                    //always keep at least 1 spare row at the bottom,
+                    rowHeaders: true,
+                    colHeaders: true,
+                    contextMenu: true
+                });
             }
                 
             
@@ -70,12 +98,7 @@
 
     </div>
 
-
-    <!--Canvas-->
-    <script type="text/paperscript" src="Scripts/canvaslogic.js" canvas="mainCanvas">
-    </script>
-
-    <canvas id="mainCanvas" resize></canvas>
+    
 
 </body>
 </html>

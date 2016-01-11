@@ -1,35 +1,36 @@
 ﻿html, body {
     height: 100%;
-    margin: 0;
+    margin: 20px;
     padding: 0;
     font-family: 'Roboto','sans-serif';
 }
 
-#map-canvas {
-    height: 100%;
-    width: 80%;
-    float: right;
+
+#wrapper{
+    height: 70%;
+    width: 100%;
+    clear:both;
 }
 
 #control-panel {
-    height: 100%;
-    width: 18%;
+    width: 20%;
     float: left;
     padding-left: 15px;
     margin-top: 10px;
     background-color: #fff;
     text-align: left;
     font-family: 'Roboto','sans-serif';
+    float: left;
 }
 
-#mode {
-    margin-top: 10px;
-    width: 80px;
-    font-family: 'Roboto','sans-serif';
+#drawing-area {
+    width: 80%;
+    float:left
 }
+
 
 #data-panel {
-    display: inline-block;
-    width: 350px;
-    vertical-align: top;
+    height: 30%;
+    width:100%;
+    float: left;
 }
