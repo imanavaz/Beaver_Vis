@@ -2,14 +2,73 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 
+    <!--Styles-->
+    <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+    
     <!--API and Libraries-->
+    <script type="text/javascript" src="Lib/tabletop.js"></script>
     <script type="text/javascript" src="Lib/paper-full.js"></script>
-
+    
+    
+    <script type="text/javascript" src="Scripts/datagridlogic.js" ></script>
 
 </head>
 <body>
+
+    <!--Vis control panel-->
+    <div id="control-panel">
+        <br /><br />
+
+        <b>Trajecctories:</b><br />
+        <select id="trajectory-list">
+            <option selected disabled>Choose ...</option>
+        </select>
+
+        <br /><br />
+
+        <b>Travel mode: </b>
+        <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+        </select>
+
+        <br />
+
+    </div>
+
+
+    <!--Data panel-->
+    <div id="data-panel">
+        
+        <div id="myGrid" style="width:100%;height:400px;"></div>
+        
+        <script type="text/javascript">
+            window.onload = function () { init() };
+
+            var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1McbaCouYOJ6fVlLuQX1W3cPm6pWn8_5eRh6tLHgcQdA/pubhtml?gid=0&single=true';
+
+            function init() {
+                Tabletop.init({
+                    key: public_spreadsheet_url,
+                    callback: showInfo,
+                    simpleSheet: true
+                })
+            }
+
+            function showInfo(data, tabletop) {
+                alert("Successfully processed!")
+                console.log(data);
+            }
+                
+            
+
+        </script>
+
+    </div>
 
 
     <!--Canvas-->
@@ -17,6 +76,6 @@
     </script>
 
     <canvas id="mainCanvas" resize></canvas>
-    
+
 </body>
 </html>

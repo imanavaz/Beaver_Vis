@@ -77,9 +77,17 @@
   <ItemGroup>
     <Content Include="Images\beaver1.jpg" />
     <Content Include="index.html" />
+    <Content Include="Lib\d3.min.js" />
+    <Content Include="Lib\jquery-1.7.min.js" />
+    <Content Include="Lib\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Lib\jquery.event.drag-2.2.js" />
     <Content Include="Lib\paper-full.js" />
+    <Content Include="Lib\tabletop.js" />
+    <Content Include="Licenses\d3-license.txt" />
     <Content Include="Licenses\pape-js-license.txt" />
     <Content Include="Scripts\canvaslogic.js" />
+    <Content Include="Scripts\datagridlogic.js" />
+    <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
