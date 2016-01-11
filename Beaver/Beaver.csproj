@@ -75,11 +75,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\beaver1.jpg" />
+    <Content Include="index.html" />
+    <Content Include="Lib\paper-full.js" />
+    <Content Include="Licenses\pape-js-license.txt" />
+    <Content Include="Scripts\canvaslogic.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
