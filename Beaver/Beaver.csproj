@@ -85,8 +85,9 @@
     <Content Include="Lib\paper-full.js" />
     <Content Include="Lib\tabletop.js" />
     <Content Include="Licenses\d3-license.txt" />
-    <Content Include="Licenses\pape-js-license.txt" />
+    <Content Include="Licenses\paper-js-license.txt" />
     <Content Include="Scripts\canvaslogic.js" />
+    <Content Include="Scripts\controlpanel-logic.js" />
     <Content Include="Scripts\datagridlogic.js" />
     <Content Include="Styles\handsontable.full.css" />
     <Content Include="Styles\styles.css" />
