@@ -13,8 +13,9 @@
     <script type="text/javascript" src="Lib/paper-full.js"></script>
     <script type="text/javascript" src="Lib/handsontable.full.js"></script>
     
+    <script type="text/javascript" src="Scripts/datagridlogic.js"></script>   
     <script type="text/javascript" src="Scripts/controlpanel-logic.js" ></script>
-    <script type="text/javascript" src="Scripts/datagridlogic.js" ></script>
+
 
 </head>
 <body>
@@ -24,7 +25,8 @@
         <!--Vis control panel-->
         <div id="control-panel">
             <br /><br />
-            
+            <label><b>Shapes :</b></label>
+            <br />
             <div id="shapes-panel" class="radio-toolbar">
                 <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()">
                 <label for="rect-radio">rect</label>
@@ -36,8 +38,22 @@
                 <label for="circle-radio">circle</label> 
             </div>
             
+
+
             <div id="properties-panel">
-                <button type="button" onclick="myFunction()">Click Me!</button>
+                <br /><br />
+                <label><b>Properties :</b></label>
+                <br />
+                <select name="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <br/>
+                <br />
+                <button type="button" onclick="myFunction()">Test!</button>
             </div>
             
             
@@ -60,44 +76,10 @@
     <!--Data panel-->
     <div id="data-panel">
         
-        <div id="myGrid" style="width:100%;height:400px;" class="dataTable"></div>
+        <div id="myGrid" style="width:100%;height:400px;" class="dataTable" ></div>
         
-        <script type="text/javascript">
-            window.onload = function () { init() };
 
-            var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1McbaCouYOJ6fVlLuQX1W3cPm6pWn8_5eRh6tLHgcQdA/pubhtml?gid=0&single=true';
-
-            function init() {
-                Tabletop.init({
-                    key: public_spreadsheet_url,
-                    callback: showInfo,
-                    simpleSheet: true
-                })
-            }
-
-            function showInfo(data, tabletop) {
-                //alert("Successfully processed!")
-                //console.log(data);
-
-                container = document.querySelector('#myGrid');
-
-                var hot = new Handsontable(container, {
-                    data: data,
-                    startRows: 5,
-                    startCols: 5,
-                    minSpareCols: 10,
-                    //always keep at least 1 spare row at the right
-                    minSpareRows: 1,
-                    //always keep at least 1 spare row at the bottom,
-                    rowHeaders: true,
-                    colHeaders: true,
-                    contextMenu: true
-                });
-            }
-                
-            
-
-        </script>
+       
 
     </div>
 

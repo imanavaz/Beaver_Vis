@@ -5,19 +5,17 @@ var currshape;//to keep the shpae being designed
 
 function myFunction()
 {
-    
+    //if (selectedShapeType == "rect")
+    //{
+    //    currshape.size.width = 50;
+    //    currshape.size.height = 10;        
+    //}
+    //else if (selectedShapeType == "circle")
+    //{
+    //    currshape.radius = 50;
+    //}
 
-    if (selectedShapeType == "rect")
-    {
-        //currshape.size = new Size(50,100);
-        
-
-        
-    }
-    else if (selectedShapeType == "circle")
-    {
-        currshape.fillColor = "red";
-    }
+    console.log(dataGrid.getDataAtCell(2, 2));
 }
 
 
