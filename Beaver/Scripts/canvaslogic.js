@@ -1,13 +1,14 @@
 ﻿var canvas = document.getElementById("main-canvas");
-var currshape;//to keep the shpae being designed
 
-function onMouseUp(event) {
 
-    if (selectedshape == "rect")
+
+function onMouseUp(event) //draw shapes on canvas
+{
+    if (selectedShapeType == "rect")
     {
         var topLeft = new Point(event.downPoint);
-        var sizeHeight = event.point.y - event.downPoint.y;
-        var sizeWidth = event.point.x - event.downPoint.x;
+        var sizeHeight = Math.abs(event.point.y - event.downPoint.y);
+        var sizeWidth = Math.abs(event.point.x - event.downPoint.x);
         var rectSize = new Size(sizeWidth, sizeHeight);
 
         var rect = new Shape.Rectangle(topLeft, rectSize);
@@ -15,11 +16,15 @@ function onMouseUp(event) {
         rect.strokeColor = 'black';
         rect.fillColor = 'white';
 
+        if (currshape != null)
+        {
+            currshape.selected = false;
+        }
+
         currshape = rect;
-    
-        
+        currshape.selected = true;
     }
-    else if (selectedshape == "circle")
+    else if (selectedShapeType == "circle")
     {
         var circle = new Path.Circle({
             center: event.middlePoint,
@@ -28,7 +33,31 @@ function onMouseUp(event) {
         circle.strokeColor = 'black';
         circle.fillColor = 'white';
 
-        currshape = circle;
-    }
+        if (currshape != null)
+        {
+            currshape.selected = false;
+        }
 
+        currshape = circle;
+        currshape.selected = true;
+    }
+    else if (selectedShapeType == "line")
+    {
+        var myPath = new Path();
+        myPath.strokeColor = 'black';
+        myPath.add(event.downPoint);
+        myPath.add(event.point);
+
+        if (currshape != null) {
+            currshape.selected = false;
+        }
+
+        currshape = myPath;
+        currshape.selected = true;
+    }
 }
+
+//function onMouseDown(event) //select shapes
+//{
+//    console.log(project.hitTest(event.point));
+//}

@@ -26,18 +26,18 @@
             <br /><br />
             
             <div id="shapes-panel" class="radio-toolbar">
-                <input type="radio" id="rect-radio" name="radios" value="rect">
+                <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()">
                 <label for="rect-radio">rect</label>
 
-                <input type="radio" id="angle-radio" name="radios" value="angle">
-                <label for="angle-radio">angle</label>
+                <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
+                <label for="line-radio">line</label>
 
-                <input type="radio" id="circle-radio" name="radios" value="circle">
+                <input type="radio" id="circle-radio" name="radios" value="circle" onclick="circleClicked()">
                 <label for="circle-radio">circle</label> 
             </div>
             
             <div id="properties-panel">
-
+                <button type="button" onclick="myFunction()">Click Me!</button>
             </div>
             
             
