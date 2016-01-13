@@ -55,7 +55,7 @@ function onMouseUp(event) //draw shapes on canvas
     }
 }
 
-//function onMouseDown(event) //select shapes
-//{
-//    console.log(project.hitTest(event.point));
-//}
+function onMouseDown(event) //select shapes
+{
+    console.log(project.hitTest(event.point));
+}
