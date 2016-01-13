@@ -38,7 +38,6 @@
     float: right;
 }
 
-
 #data-panel {
     height: 40%;
     width: 100%;
@@ -46,7 +45,7 @@
     clear: both;
 }
 
-#main-canvas {
+#main-canvas{
     width:100%;
     height:100%;
     background: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFklEQVQIW2NkQAOM+ASMGRgYzmKoAAATugEFEuyN6AAAAABJRU5ErkJggg== ) repeat;
@@ -54,7 +53,6 @@
 
 .radio-toolbar input[type="radio"] {
     display:none; 
-    
 }
 
 .radio-toolbar label {

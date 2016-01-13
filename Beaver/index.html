@@ -10,15 +10,16 @@
     
     <!--API and Libraries-->
     <script type="text/javascript" src="Lib/tabletop.js"></script>
-    <script type="text/javascript" src="Lib/paper-full.js"></script>
+    <script type="text/javascript" src="Lib/fabric.js"></script>
     <script type="text/javascript" src="Lib/handsontable.full.js"></script>
     
     <script type="text/javascript" src="Scripts/datagridlogic.js"></script>   
     <script type="text/javascript" src="Scripts/controlpanel-logic.js" ></script>
+    <script type="text/javascript" src="Scripts/canvaslogic.js"></script>
 
 
 </head>
-<body>
+<body onresize="updateCanvasSize()">
 
     <div id="wrapper">
 
@@ -63,11 +64,23 @@
 
 
         <!--Canvas-->
-        <script type="text/paperscript" src="Scripts/canvaslogic.js" canvas="main-canvas">
-        </script>
+        <div id="drawing-area" > 
+            <canvas id="main-canvas"></canvas>
+            <script>
 
-        <div id="drawing-area">
-            <canvas id="main-canvas" resize></canvas>
+                (function () {
+                    var canvas = new fabric.Canvas('main-canvas');
+                    
+                    var drawingarea = document.getElementById('drawing-area');
+
+                    canvas.setWidth(drawingarea.clientWidth);
+                    canvas.setHeight(drawingarea.clientHeight);
+                    
+                    //fabric.Object.prototype.transparentCorners = false;
+
+                })();
+
+            </script>
         </div>
 
     </div>
@@ -77,9 +90,6 @@
         
         <div id="myGrid" style="width:100%;height:400px;" class="dataTable" ></div>
         
-
-       
-
     </div>
 
     

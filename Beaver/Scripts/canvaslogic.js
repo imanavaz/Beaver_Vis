@@ -1,7 +1,6 @@
 ﻿var canvas = document.getElementById("main-canvas");
 
 
-
 function onMouseUp(event) //draw shapes on canvas
 {
     if (selectedShapeType == "rect")
@@ -11,18 +10,20 @@ function onMouseUp(event) //draw shapes on canvas
         var sizeWidth = Math.abs(event.point.x - event.downPoint.x);
         var rectSize = new Size(sizeWidth, sizeHeight);
 
-        var rect = new Shape.Rectangle(topLeft, rectSize);
-        
-        rect.strokeColor = 'black';
-        rect.fillColor = 'white';
+        // create a rectangle object
+        var rect = new fabric.Rect({
+            left: topLeft.x,
+            top: topLeft.y,
+            fill: 'white',
+            width: sizeWidth,
+            height: sizeHeight
+        });
 
-        if (currshape != null)
-        {
-            currshape.selected = false;
-        }
-
+        // "add" rectangle onto canvas
+        canvas.add(rect);
+               
         currshape = rect;
-        currshape.selected = true;
+       
     }
     else if (selectedShapeType == "circle")
     {
@@ -58,4 +59,16 @@ function onMouseUp(event) //draw shapes on canvas
 function onMouseDown(event) //select shapes
 {
     console.log(project.hitTest(event.point));
+}
+
+
+
+
+
+function updateCanvasSize() {
+    var canvas = new fabric.Canvas('main-canvas');
+    var drawingarea = document.getElementById('drawing-area');
+    
+    canvas.setWidth(drawingarea.clientWidth);
+    canvas.setHeight(drawingarea.clientHeight);
 }
