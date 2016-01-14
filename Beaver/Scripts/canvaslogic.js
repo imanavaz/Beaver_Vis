@@ -33,6 +33,7 @@ paper.canvas.onmouseup = function (event) {
         rect.click(function () {
             currShape = rect;
             selectedShapeType = "rect";
+            document.getElementById("rect-radio").checked = true;
         });
 
         currShape = rect;
@@ -47,6 +48,7 @@ paper.canvas.onmouseup = function (event) {
         circle.click(function () {
             currShape = circle;
             selectedShapeType = "circle";
+            document.getElementById("circle-radio").checked = true;
         });
 
         currShape = circle;
@@ -60,6 +62,7 @@ paper.canvas.onmouseup = function (event) {
         path1.click(function () {
             currShape = path1;
             selectedShapeType = "line";
+            document.getElementById("line-radio").checked = true;
         });
 
         currShape = path1;
