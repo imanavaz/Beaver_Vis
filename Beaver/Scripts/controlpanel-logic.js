@@ -1,34 +1,37 @@
-﻿var selectedShapeType = "";
+﻿var selectedShapeType = "rect";
 var selectedShapeProperty = "";
-var currshape;//to keep the shpae being designed
+var currShape;//to keep the shpae being designed
 
 
-function myFunction()
-{
-    if (selectedShapeType == "rect")
-    {
-        currshape.size.width = dataGrid.getDataAtCell(2, 2);;
-        currshape.size.height = 10;        
+function myFunction() {
+    if (selectedShapeType == "rect") {
+        currShape.attr({
+            width: dataGrid.getDataAtCell(2, 2),
+            height: 10
+        })
     }
     else if (selectedShapeType == "circle")
     {
-        currshape.radius = 50;
+        currShape.attr({
+            r : dataGrid.getDataAtCell(2, 2)
+        })
+    }
+    else if (selectedShapeType == "line")
+    {
+        //don't know what to do, need to alter slope of angel perhaps
     }
 
 }
 
 
 /********Shapes*******/
-function lineClicked()
-{
+function lineClicked() {
     selectedShapeType = "line";
 }
-function circleClicked()
-{
+function circleClicked() {
     selectedShapeType = "circle";
 }
-function rectClicked()
-{
+function rectClicked() {
     selectedShapeType = "rect";
 }
 

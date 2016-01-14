@@ -10,26 +10,28 @@
     
     <!--API and Libraries-->
     <script type="text/javascript" src="Lib/tabletop.js"></script>
-    <script type="text/javascript" src="Lib/fabric.js"></script>
     <script type="text/javascript" src="Lib/handsontable.full.js"></script>
-    
+    <script type="text/javascript" src="Lib/raphael-min.js" ></script>
+
+
+    <!--My Code-->
+    <script type="text/javascript" src="Scripts/layoutManagement.js" ></script>
     <script type="text/javascript" src="Scripts/datagridlogic.js"></script>   
     <script type="text/javascript" src="Scripts/controlpanel-logic.js" ></script>
-    <script type="text/javascript" src="Scripts/canvaslogic.js"></script>
-
+    
 
 </head>
-<body onresize="updateCanvasSize()">
+<body>
 
     <div id="wrapper">
 
-        <!--Vis control panel-->
+        <!--Vis control panel-->        
         <div id="control-panel">
             <br /><br />
             <label><b>Shapes :</b></label>
             <br />
             <div id="shapes-panel" class="radio-toolbar">
-                <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()">
+                <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()" checked>
                 <label for="rect-radio">rect</label>
 
                 <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
@@ -65,22 +67,7 @@
 
         <!--Canvas-->
         <div id="drawing-area" > 
-            <canvas id="main-canvas"></canvas>
-            <script>
-
-                (function () {
-                    var canvas = new fabric.Canvas('main-canvas');
-                    
-                    var drawingarea = document.getElementById('drawing-area');
-
-                    canvas.setWidth(drawingarea.clientWidth);
-                    canvas.setHeight(drawingarea.clientHeight);
-                    
-                    //fabric.Object.prototype.transparentCorners = false;
-
-                })();
-
-            </script>
+            <script type="text/javascript" src="Scripts/canvaslogic.js"></script>
         </div>
 
     </div>

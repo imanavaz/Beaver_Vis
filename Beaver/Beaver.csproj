@@ -66,7 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lib\fabric.js" />
+    <Content Include="Lib\raphael-min.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -80,16 +80,12 @@
     <Content Include="index.html" />
     <Content Include="Lib\d3.min.js" />
     <Content Include="Lib\handsontable.full.js" />
-    <Content Include="Lib\jquery-1.7.min.js" />
-    <Content Include="Lib\jquery-ui-1.8.16.custom.min.js" />
-    <Content Include="Lib\jquery.event.drag-2.2.js" />
-    <Content Include="Lib\paper-full.js" />
     <Content Include="Lib\tabletop.js" />
     <Content Include="Licenses\d3-license.txt" />
-    <Content Include="Licenses\paper-js-license.txt" />
     <Content Include="Scripts\canvaslogic.js" />
     <Content Include="Scripts\controlpanel-logic.js" />
     <Content Include="Scripts\datagridlogic.js" />
+    <Content Include="Scripts\layoutManagement.js" />
     <Content Include="Styles\handsontable.full.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />

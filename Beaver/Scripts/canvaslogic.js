@@ -1,74 +1,70 @@
-﻿var canvas = document.getElementById("main-canvas");
+﻿var paper = Raphael(document.getElementById("drawing-area"), "100%", "100%");
+
+var eventStartPointX;
+var eventStartPointY;
+
+var eventEndPointX;
+var eventEndPointY;
 
 
-function onMouseUp(event) //draw shapes on canvas
-{
-    if (selectedShapeType == "rect")
-    {
-        var topLeft = new Point(event.downPoint);
-        var sizeHeight = Math.abs(event.point.y - event.downPoint.y);
-        var sizeWidth = Math.abs(event.point.x - event.downPoint.x);
-        var rectSize = new Size(sizeWidth, sizeHeight);
+/*Mouse Events*/
 
-        // create a rectangle object
-        var rect = new fabric.Rect({
-            left: topLeft.x,
-            top: topLeft.y,
-            fill: 'white',
-            width: sizeWidth,
-            height: sizeHeight
+paper.canvas.onmousedown = function(event) {
+    eventStartPointX = event.offsetX;
+    eventStartPointY = event.offsetY;
+
+    console.log('Down: ' + eventStartPointX, eventStartPointY);
+};
+
+
+paper.canvas.onmouseup = function (event) {
+
+    console.log('Up: ' + event.offsetX, event.offsetY);
+
+    eventEndPointX = event.offsetX;
+    eventEndPointY = event.offsetY;
+
+    var w = Math.abs(eventEndPointX - eventStartPointX);
+    var h = Math.abs(eventEndPointY - eventStartPointY);
+
+    if (selectedShapeType == "rect") {
+        var rect = paper.rect(eventStartPointX, eventStartPointY, w, h).attr({ fill: "orange" });
+
+        rect.click(function () {
+            currShape = rect;
+            selectedShapeType = "rect";
         });
 
-        // "add" rectangle onto canvas
-        canvas.add(rect);
-               
-        currshape = rect;
-       
+        currShape = rect;
     }
-    else if (selectedShapeType == "circle")
-    {
-        var circle = new Shape.Circle(event.middlePoint,event.delta.length / 2);
+    else if (selectedShapeType == "circle") {
+        var radius = Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)) / 2;
 
-        circle.strokeColor = 'black';
-        circle.fillColor = 'white';
+        var circle = paper.circle(eventStartPointX+radius, eventStartPointY+radius, radius);
+        // Sets the fill attribute of the circle to red (#f00)
+        circle.attr("fill", "blue");
 
-        if (currshape != null)
-        {
-            currshape.selected = false;
-        }
+        circle.click(function () {
+            currShape = circle;
+            selectedShapeType = "circle";
+        });
 
-        currshape = circle;
-        currshape.selected = true;
+        currShape = circle;
     }
     else if (selectedShapeType == "line")
     {
-        var myPath = new Path();
-        myPath.strokeColor = 'black';
-        myPath.add(event.downPoint);
-        myPath.add(event.point);
+        var pathString = 'M' + eventStartPointX + ',' + eventStartPointY + 'L' + eventEndPointX + ','+ eventEndPointY+'Z';
+        var path1 = paper.path(pathString);
+        path1.attr({ "stroke-width": 2, fill: "black" });
 
-        if (currshape != null) {
-            currshape.selected = false;
-        }
+        path1.click(function () {
+            currShape = path1;
+            selectedShapeType = "line";
+        });
 
-        currshape = myPath;
-        currshape.selected = true;
+        currShape = path1;
     }
-}
 
-function onMouseDown(event) //select shapes
-{
-    console.log(project.hitTest(event.point));
 }
 
 
-
-
-
-function updateCanvasSize() {
-    var canvas = new fabric.Canvas('main-canvas');
-    var drawingarea = document.getElementById('drawing-area');
-    
-    canvas.setWidth(drawingarea.clientWidth);
-    canvas.setHeight(drawingarea.clientHeight);
-}
