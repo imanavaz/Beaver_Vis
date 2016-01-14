@@ -13,13 +13,13 @@ paper.canvas.onmousedown = function(event) {
     eventStartPointX = event.offsetX;
     eventStartPointY = event.offsetY;
 
-    console.log('Down: ' + eventStartPointX, eventStartPointY);
+    //console.log('Down: ' + eventStartPointX, eventStartPointY);
 };
 
 
 paper.canvas.onmouseup = function (event) {
 
-    console.log('Up: ' + event.offsetX, event.offsetY);
+    //console.log('Up: ' + event.offsetX, event.offsetY);
 
     eventEndPointX = event.offsetX;
     eventEndPointY = event.offsetY;
@@ -55,6 +55,7 @@ paper.canvas.onmouseup = function (event) {
     }
     else if (selectedShapeType == "line")
     {
+        //console.log('M' + eventStartPointX + ',' + eventStartPointY + 'L' + eventEndPointX + ',' + eventEndPointY + 'Z');
         var pathString = 'M' + eventStartPointX + ',' + eventStartPointY + 'L' + eventEndPointX + ','+ eventEndPointY+'Z';
         var path1 = paper.path(pathString);
         path1.attr({ "stroke-width": 2, fill: "black" });
