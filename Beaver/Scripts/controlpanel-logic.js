@@ -146,6 +146,23 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
                 //console.log(pathString);
             }
+            else if ((shapeType == "line") && (prop == "angel")) {
+                var teta = data[i];
+
+                var l = Math.floor(shape.getTotalLength() / 2);
+                var startpoint = shape.getPointAtLength(1);
+
+                b = l * Math.cos(teta);
+                var x2 = b + startpoint.x;
+
+                a = l * Math.sin(teta);
+                var y2 = a + startpoint.y;
+
+                var pathString = 'M' + startpoint.x + ',' + startpoint.y + 'L' + x2 + ',' + y2 + 'Z';
+                shape.attr("path", pathString);
+
+                //console.log(pathString);
+            }
         }
     }
 
@@ -190,4 +207,7 @@ function colorClicked() {
 }
 function slopeClicked() {
     selectedShapeProperty = "slope";
+}
+function angelClicked() {
+    selectedShapeProperty = "angel";
 }

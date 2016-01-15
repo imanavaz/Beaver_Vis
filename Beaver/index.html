@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Beaver</title>
     <meta charset="utf-8" />
 
     <!--Styles-->
@@ -30,36 +30,39 @@
             <br />
             <label><b>Shapes :</b></label>
             <br />
-            <div id="shapes-panel" class="radio-toolbar">
-                <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()" checked>
-                <label for="rect-radio">rect</label>
+            <div class="radio-toolbar">
+                <input type="radio" id="rrect" name="radios" value="rect" onclick="rectClicked()" checked="checked">
+                <label for="rrect" class="rradio rrect" title="rectangle"></label>
 
-                <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
-                <label for="line-radio">line</label>
+                <input type="radio" id="rline" name="radios" value="line" onclick="lineClicked()">
+                <label for="rline" class="rradio rline" title="line"></label>
 
-                <input type="radio" id="circle-radio" name="radios" value="circle" onclick="circleClicked()">
-                <label for="circle-radio">circle</label> 
+                <input type="radio" id="rcircle" name="radios" value="circle" onclick="circleClicked()">
+                <label for="rcircle" class="rradio rcircle" title="circle"></label> 
             </div>
             
 
-            <br /><br />
+            <br />
             <label><b>Properties :</b></label>
             <br />
             <div id="properties-panel" class="radio-toolbar">
                 <input type="radio" id="height-radio" name="radios2" value="height" onclick="heightClicked()">
-                <label for="height-radio">height</label>
+                <label for="height-radio" class="rradio height-radio" title="height"></label>
 
-                <input type="radio" id="width-radio" name="radios2" value="width" onclick="widthClicked()">
-                <label for="width-radio">width</label>
+                <input type="radio" id="width-radio" name="radios2" value="width"  onclick="widthClicked()">
+                <label for="width-radio" class="rradio width-radio" title="width"></label>
 
                 <input type="radio" id="radius-radio" name="radios2" value="radius" onclick="radiusClicked()">
-                <label for="radius-radio">radius</label>
+                <label for="radius-radio" class="rradio radius-radio" title="radius"></label>
 
                 <input type="radio" id="color-radio" name="radios2" value="color" onclick="colorClicked()">
-                <label for="color-radio">color</label>
+                <label for="color-radio" class="rradio color-radio" title="color"></label>
 
                 <input type="radio" id="slope-radio" name="radios2" value="slope" onclick="slopeClicked()">
-                <label for="slope-radio">slope</label>
+                <label for="slope-radio" class="rradio slope-radio" title="slope"></label>
+
+                <input type="radio" id="angel-radio" name="radios2" value="angel" onclick="angelClicked()">
+                <label for="angel-radio" class="rradio angel-radio" title="angel"></label>
             </div>
 
             <br />

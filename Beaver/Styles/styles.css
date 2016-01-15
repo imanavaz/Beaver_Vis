@@ -52,23 +52,68 @@
     /*background: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFklEQVQIW2NkQAOM+ASMGRgYzmKoAAATugEFEuyN6AAAAABJRU5ErkJggg== ) repeat;*/
 }
 
-.radio-toolbar input[type="radio"] {
-    display:none; 
+.radio-toolbar {
+    margin: 5px;
 }
 
-.radio-toolbar label {
+.radio-toolbar input {
+    position:absolute;
+    z-index:999;
+}
+
+.radio-toolbar input:active +.rradio, .radio-toolbar input:active +.rradio{opacity: .9;}
+.radio-toolbar input:checked +.rradio, .radio-toolbar input:checked +.rradio{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+
+.radio-toolbar input{ margin: 2px 0 0 0px; }
+.radio-toolbar label{ margin-left: 10px; }
+
+.rrect{background-image:url(../Images/rect.png);}
+.rline{background-image:url(../Images/line.png);}
+.rcircle{background-image:url(../Images/circle.png);}
+.width-radio{background-image:url(../Images/width.png);}
+.height-radio{background-image:url(../Images/height.png);}
+.radius-radio{background-image:url(../Images/radius.png);}
+.color-radio{background-image:url(../Images/color.png);}
+.slope-radio{background-image:url(../Images/slope.png);}
+.angel-radio{background-image:url(../Images/angel.png);}
+
+.rradio{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:40px;height:35px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1) grayscale(1) opacity(.7);
+            filter: brightness(1) grayscale(1) opacity(.7);
+}
+
+.rradio:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/*.radio-toolbar label {
     display:inline-block;
     background-color:#C9D1D0;
     padding:4px 11px;
     font-family:Arial;
     font-size:16px;
-    /*font-weight: bold;*/
+    /*font-weight: bold;
     margin: 5px;
-     /* rounded corners */
+     /* rounded corners 
     -webkit-border-radius: 6px;
     -moz-border-radius: 3px;
-}
+}*/
 
-.radio-toolbar input[type="radio"]:checked + label { 
+/*.radio-toolbar input[type="radio"]:checked + label { 
     background-color:#33D320;
-}
+}*/

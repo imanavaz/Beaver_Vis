@@ -66,6 +66,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\angel.png" />
+    <Content Include="Images\circle.png" />
+    <Content Include="Images\color.png" />
+    <Content Include="Images\height.png" />
+    <Content Include="Images\line.png" />
+    <Content Include="Images\radius.png" />
+    <Content Include="Images\rect.png" />
+    <Content Include="Images\slope.png" />
+    <Content Include="Images\width.png" />
     <Content Include="Lib\raphael-min.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
