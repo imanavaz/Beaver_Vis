@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\angel.png" />
+    <Content Include="Images\beaver-icon.jpg" />
     <Content Include="Images\circle.png" />
     <Content Include="Images\color.png" />
     <Content Include="Images\height.png" />

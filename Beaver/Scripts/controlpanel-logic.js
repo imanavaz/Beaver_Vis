@@ -41,6 +41,15 @@ function updateShapeByCell(shape, i, j) {
        shape.attr("path", pathString);
        
        //console.log(pathString);
+   } else if ((selectedShapeType == "line") && (selectedShapeProperty == "angel"))
+   {
+       var teta = dataGrid.getDataAtCell(i, j);
+
+       
+   }
+   else
+   {
+       console.log("This combination of shape and property has not been implemented!");
    }
 
    return shape;
@@ -123,8 +132,6 @@ function cloneByColumn(shape1, shapeType, prop, column) {
                     document.getElementById("circle-radio").checked = true;
                 });
 
-                console.log();
-
                 tempshape = shape;
                 tempshapeBBox = tempshape.getBBox();//update bounding box
             }
@@ -132,8 +139,13 @@ function cloneByColumn(shape1, shapeType, prop, column) {
             {
                 var teta = data[i];
 
-                var l = Math.floor(shape.getTotalLength() / 2);
-                var startpoint = shape.getPointAtLength(1);
+                var l = Math.floor(tempshape.getTotalLength() / 2);
+                var startpoint;
+
+                if (i == 0)
+                    startpoint = tempshape.getPointAtLength(1);
+                else
+                    startpoint = tempshape.getPointAtLength(l);
 
                 b = l * Math.cos(teta);
                 var x2 = b + startpoint.x;
@@ -142,9 +154,15 @@ function cloneByColumn(shape1, shapeType, prop, column) {
                 var y2 = a + startpoint.y;
 
                 var pathString = 'M' + startpoint.x + ',' + startpoint.y + 'L' + x2 + ',' + y2 + 'Z';
-                shape.attr("path", pathString);
+                shape = paper.path(pathString);
 
-                //console.log(pathString);
+                shape.click(function () {
+                    currShape = shape;
+                    selectedShapeType = "line";
+                    document.getElementById("line-radio").checked = true;
+                });
+
+                tempshape = shape;
             }
             else if ((shapeType == "line") && (prop == "angel")) {
                 var teta = data[i];

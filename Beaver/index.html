@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Beaver</title>
+    <title>eaver</title>
     <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Images/Beaver-icon.jpg" />
 
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="Styles/styles.css" />
@@ -31,14 +32,14 @@
             <label><b>Shapes :</b></label>
             <br />
             <div class="radio-toolbar">
-                <input type="radio" id="rrect" name="radios" value="rect" onclick="rectClicked()" checked="checked">
-                <label for="rrect" class="rradio rrect" title="rectangle"></label>
+                <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()" checked="checked">
+                <label for="rect-radio" class="rradio rect-radio" title="rectangle"></label>
 
-                <input type="radio" id="rline" name="radios" value="line" onclick="lineClicked()">
-                <label for="rline" class="rradio rline" title="line"></label>
+                <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
+                <label for="line-radio" class="rradio line-radio" title="line"></label>
 
-                <input type="radio" id="rcircle" name="radios" value="circle" onclick="circleClicked()">
-                <label for="rcircle" class="rradio rcircle" title="circle"></label> 
+                <input type="radio" id="circle-radio" name="radios" value="circle" onclick="circleClicked()">
+                <label for="circle-radio" class="rradio circle-radio" title="circle"></label> 
             </div>
             
 
@@ -66,10 +67,8 @@
             </div>
 
             <br />
-            <br />
-            <button type="button" onclick="myFunction()">Select cell</button>
-            <br />
-            <button type="button" onclick="myFunction2()">Apply on Column</button>
+            <button type="button" class="generalButton" onclick="myFunction()">Apply on Cell</button>
+            <button type="button" class="generalButton" onclick="myFunction2()">Apply on Column</button>
 
 
         </div>
