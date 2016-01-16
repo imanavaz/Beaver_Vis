@@ -26,7 +26,7 @@ function updateShapeByCell(shape, i, j) {
             })
         }
    else if ((selectedShapeType == "line") && (selectedShapeProperty == "slope")) {
-       var teta = dataGrid.getDataAtCell(i, j);
+       var teta = dataGrid.getDataAtCell(i, j) * (Math.PI / 180);
        
        var l = Math.floor(shape.getTotalLength()/2);
        var startpoint = shape.getPointAtLength(1);
@@ -43,13 +43,23 @@ function updateShapeByCell(shape, i, j) {
        //console.log(pathString);
    } else if ((selectedShapeType == "line") && (selectedShapeProperty == "angel"))
    {
-       var teta = dataGrid.getDataAtCell(i, j);
+       var teta = dataGrid.getDataAtCell(i, j) * (Math.PI / 180) * -1; //-1 for counter clockwise
+       var len = parseInt(shape.getTotalLength() / 4); //half the lenght
+       var offsetPoint = shape.getPointAtLength(len);
 
-       
+       var x1 = -(len * Math.cos(teta)) + offsetPoint.x;
+       var x2 = (len * Math.cos(teta)) + offsetPoint.x;
+       var y2 = (len * Math.sin(teta)) + offsetPoint.y;
+       var y1 = -(len * Math.sin(teta)) + offsetPoint.y;
+
+       var pathString = 'M' + (x1)+ ',' + (y1) + 'L' + (x2) + ',' + (y2)+ 'Z';
+       shape.attr("path", pathString);
+
+       //console.log(shape.getTotalLength());
    }
    else
    {
-       console.log("This combination of shape and property has not been implemented!");
+       alert("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
    }
 
    return shape;
@@ -137,7 +147,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
             }
             else if ((shapeType == "line") && (prop == "slope"))
             {
-                var teta = data[i];
+                var teta = data[i] * (Math.PI / 180);
 
                 var l = Math.floor(tempshape.getTotalLength() / 2);
                 var startpoint;
@@ -164,22 +174,31 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
                 tempshape = shape;
             }
-            else if ((shapeType == "line") && (prop == "angel")) {
-                var teta = data[i];
+            else if ((shapeType == "line") && (prop == "angel"))
+            {
+                var teta = data[i] * (Math.PI / 180) * -1; //-1 for counter clockwise
+                var len = parseInt(tempshape.getTotalLength() / 4); //half the lenght
+                var offsetPoint = tempshape.getPointAtLength(len);
 
-                var l = Math.floor(shape.getTotalLength() / 2);
-                var startpoint = shape.getPointAtLength(1);
+                var x1 = -(len * Math.cos(teta)) + (offsetPoint.x + i * 20);//move shapes by 20 pixels each time
+                var x2 = (len * Math.cos(teta)) + (offsetPoint.x + i * 20);
+                var y2 = (len * Math.sin(teta)) + (offsetPoint.y);
+                var y1 = -(len * Math.sin(teta)) + (offsetPoint.y);
 
-                b = l * Math.cos(teta);
-                var x2 = b + startpoint.x;
+                var pathString = 'M' + (x1) + ',' + (y1) + 'L' + (x2) + ',' + (y2) + 'Z';
+                shape = paper.path(pathString);
 
-                a = l * Math.sin(teta);
-                var y2 = a + startpoint.y;
+                shape.click(function () {
+                    currShape = shape;
+                    selectedShapeType = "line";
+                    document.getElementById("line-radio").checked = true;
+                });
 
-                var pathString = 'M' + startpoint.x + ',' + startpoint.y + 'L' + x2 + ',' + y2 + 'Z';
-                shape.attr("path", pathString);
-
-                //console.log(pathString);
+                //console.log(shape.getTotalLength());   
+            }
+            else
+            {
+                alert("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
             }
         }
     }

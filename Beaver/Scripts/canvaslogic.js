@@ -67,6 +67,8 @@ paper.canvas.onmouseup = function (event) {
         });
 
         currShape = path1;
+
+        //console.log(path1.getTotalLength());
     }
 
 }
