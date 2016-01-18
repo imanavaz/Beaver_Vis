@@ -71,10 +71,10 @@ function cloneByColumn(data) {
 
     //var data = dataGrid.getDataAtCol(column);
 
+    clearCanvas();
+
     var tempshape = currShape;
     var tempshapeBBox = tempshape.getBBox();
-
-    paper.clear();//clear canvas
 
     var i,
         len = data.length;
@@ -203,14 +203,6 @@ function cloneByColumn(data) {
 
 
 
-function applyOnGroup(shape, fromRow, fromColumn, toRow, toColomn)
-{
-    var data = dataGrid.getData(fromRow, fromColumn, toRow, toColomn);
-
-    //console.log(data);
-}
-
-
 /********Shapes*******/
 function lineClicked() {
     selectedShapeType = "line";
@@ -245,10 +237,23 @@ function angelClicked() {
 }
 
 
+function clearCanvas()
+{
+    paper.clear();//clear canvas
+    //selectedShapeType = "rect";
+    //selectedShapeProperty = "";
+    //currShape = "";
 
+}
 
 
 //function myFunction()//apply a property on a specific shape
 //{
 //    updateShapeByCell(currShape, 0, 2);
+//}
+
+//function applyOnGroup(shape, fromRow, fromColumn, toRow, toColomn) {
+//    var data = dataGrid.getData(fromRow, fromColumn, toRow, toColomn);
+
+//    //console.log(data);
 //}
