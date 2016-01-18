@@ -14,7 +14,10 @@ function initGrid() {
         callback: showInfo,
         simpleSheet: true
     })
+
+    
 }
+
 
 function showInfo(data, tabletop) {
     //alert("Successfully processed!")
@@ -30,9 +33,38 @@ function showInfo(data, tabletop) {
         //always keep at least 1 spare row at the bottom,
         rowHeaders: true,
         colHeaders: true,
-        contextMenu: true
+        contextMenu: true,
+
+        afterSelection: function (r, c, r2, c2) {
+            processSelection(r, c, r2, c2);
+        }
     });
 
-    
 }
 
+function processSelection (r, c, r2, c2)
+{
+    //console.log("selected: " + r + c + r2 + c2);
+
+    if ((r == r2) && (c == c2))//one cel has been selected
+    {
+        if (currShape != null)
+            updateShapeByCell(currShape, r, c);
+        else
+            console.log("No shape has been defined!");
+    }
+    else if ((r != r2) && (c == c2)) //column has been selected
+    {
+        var data = dataGrid.getData(r, c, r2, c2);
+        cloneByColumn(data);
+    }
+    else if ((r == r2) && (c != c2)) //row has been selected
+    {
+        var data = dataGrid.getData(r, c, r2, c2);
+        cloneByColumn(data);
+    }
+    else
+    {
+        console.log("Matrix application has not been implemented yet!");
+    }
+}

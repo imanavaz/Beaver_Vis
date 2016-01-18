@@ -3,11 +3,6 @@ var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
 
 
-function myFunction()//apply a property on a specific shape
-{
-    updateShapeByCell(currShape, 0, 2);
-}
-
 function updateShapeByCell(shape, i, j) {
 
     if ((selectedShapeProperty == "height") && (selectedShapeType == "rect")) {
@@ -59,7 +54,7 @@ function updateShapeByCell(shape, i, j) {
    }
    else
    {
-       alert("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
+       console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
    }
 
    return shape;
@@ -72,11 +67,11 @@ function myFunction2() //clone a shape using a shape and for a data range
     cloneByColumn(currShape, selectedShapeType, selectedShapeProperty, 2);
 }
 
-function cloneByColumn(shape1, shapeType, prop, column) {
+function cloneByColumn(data) {
 
-    var data = dataGrid.getDataAtCol(column);
+    //var data = dataGrid.getDataAtCol(column);
 
-    var tempshape = shape1;
+    var tempshape = currShape;
     var tempshapeBBox = tempshape.getBBox();
 
     paper.clear();//clear canvas
@@ -89,7 +84,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
         if (data[i] != null)
         {
-            if ((prop == "height") && (shapeType == "rect")) {
+            if ((selectedShapeProperty == "height") && (selectedShapeType == "rect")) {
 
                 shape = paper.rect().attr({
                     x : tempshapeBBox.x + (i * (tempshapeBBox.width+2)), 
@@ -109,7 +104,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
                 tempshape = shape;
             }
-            else if ((prop == "width") && (shapeType == "rect")) {
+            else if ((selectedShapeProperty == "width") && (selectedShapeType == "rect")) {
 
                 shape = paper.rect().attr({
                     x: tempshapeBBox.x, 
@@ -127,7 +122,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
                 tempshape = shape;
             }
-            else if ((prop == "radius") && (shapeType == "circle"))
+            else if ((selectedShapeProperty == "radius") && (selectedShapeType == "circle"))
             {
                 shape = paper.circle().attr({
                     cx: tempshapeBBox.x2 + parseInt(data[i]),
@@ -145,7 +140,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
                 tempshape = shape;
                 tempshapeBBox = tempshape.getBBox();//update bounding box
             }
-            else if ((shapeType == "line") && (prop == "slope"))
+            else if ((selectedShapeType == "line") && (selectedShapeProperty == "slope"))
             {
                 var teta = data[i] * (Math.PI / 180);
 
@@ -174,7 +169,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
 
                 tempshape = shape;
             }
-            else if ((shapeType == "line") && (prop == "angel"))
+            else if ((selectedShapeType == "line") && (selectedShapeProperty == "angel"))
             {
                 var teta = data[i] * (Math.PI / 180) * -1; //-1 for counter clockwise
                 var len = parseInt(tempshape.getTotalLength() / 4); //half the lenght
@@ -198,7 +193,7 @@ function cloneByColumn(shape1, shapeType, prop, column) {
             }
             else
             {
-                alert("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
+                console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
             }
         }
     }
@@ -248,3 +243,12 @@ function slopeClicked() {
 function angelClicked() {
     selectedShapeProperty = "angel";
 }
+
+
+
+
+
+//function myFunction()//apply a property on a specific shape
+//{
+//    updateShapeByCell(currShape, 0, 2);
+//}
