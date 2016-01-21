@@ -79,6 +79,8 @@
 .radius-radio{background-image:url(../Images/radius.png);}
 .color-radio{background-image:url(../Images/color.png);}
 .slope-radio{background-image:url(../Images/slope.png);}
+.cwrotate-radio{background-image:url(../Images/rotate-clockwise.png);}
+.ccwrotate-radio{background-image:url(../Images/rotate-counterclockwise.png);}
 .angel-radio{background-image:url(../Images/angel.png);}
 
 .rradio{

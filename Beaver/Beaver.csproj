@@ -74,6 +74,8 @@
     <Content Include="Images\line.png" />
     <Content Include="Images\radius.png" />
     <Content Include="Images\rect.png" />
+    <Content Include="Images\rotate-clockwise.png" />
+    <Content Include="Images\rotate-counterclockwise.png" />
     <Content Include="Images\slope.png" />
     <Content Include="Images\width.png" />
     <Content Include="Lib\raphael-min.js" />

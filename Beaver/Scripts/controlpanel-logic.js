@@ -51,6 +51,14 @@ function updateShapeByCell(shape, i, j) {
        shape.attr("path", pathString);
 
        //console.log(shape.getTotalLength());
+
+   } else if ((selectedShapeProperty == "cwrotate"))
+   {
+       shape.transform("r"+ dataGrid.getDataAtCell(i, j));
+
+   }else if ((selectedShapeProperty == "ccwrotate"))
+   {
+       shape.transform("r" + (-dataGrid.getDataAtCell(i, j)));
    }
    else
    {
@@ -191,6 +199,26 @@ function cloneByColumn(data) {
 
                 //console.log(shape.getTotalLength());   
             }
+            else if ((selectedShapeProperty == "ccwrotate")) {
+
+                shape = tempshape.clone();
+                shape.transform("r" + (-data[i]));
+
+                shape.click(function () {
+                    currShape = shape;
+                });
+
+            }
+            else if ((selectedShapeProperty == "cwrotate")) {
+
+                shape = tempshape.clone();
+                shape.transform("r" + (data[i]));
+
+                shape.click(function () {
+                    currShape = shape;
+                });
+
+            }
             else
             {
                 console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
@@ -235,6 +263,13 @@ function slopeClicked() {
 function angelClicked() {
     selectedShapeProperty = "angel";
 }
+function ccwrotateClicked() {
+    selectedShapeProperty = "ccwrotate";
+}
+function cwrotateClicked() {
+    selectedShapeProperty = "cwrotate";
+}
+
 
 
 function clearCanvas()
