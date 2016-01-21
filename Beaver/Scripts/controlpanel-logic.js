@@ -5,6 +5,8 @@ var currShape;//to keep the shpae being designed
 
 function updateShapeByCell(shape, i, j) {
 
+    collectSelectedProperties();
+
     if ((selectedShapeProperty == "height") && (selectedShapeType == "rect")) {
             shape.attr({
                 height: dataGrid.getDataAtCell(i, j)
@@ -59,6 +61,12 @@ function updateShapeByCell(shape, i, j) {
    }else if ((selectedShapeProperty == "ccwrotate"))
    {
        shape.transform("r" + (-dataGrid.getDataAtCell(i, j)));
+   }
+   else if ((selectedShapeProperty == "movex")) {
+       shape.transform("t" + (dataGrid.getDataAtCell(i, j))+",0");
+   }
+   else if ((selectedShapeProperty == "movey")) {
+       shape.transform("t0," + (dataGrid.getDataAtCell(i, j)));
    }
    else
    {
@@ -219,6 +227,26 @@ function cloneByColumn(data) {
                 });
 
             }
+            else if ((selectedShapeProperty == "movex")) {
+
+                shape = tempshape.clone();
+                shape.transform("t" + (data[i])+",0");
+
+                shape.click(function () {
+                    currShape = shape;
+                });
+
+            }
+            else if ((selectedShapeProperty == "movey")) {
+
+                shape = tempshape.clone();
+                shape.transform("t0," + (data[i]));
+
+                shape.click(function () {
+                    currShape = shape;
+                });
+
+            }
             else
             {
                 console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
@@ -227,6 +255,21 @@ function cloneByColumn(data) {
     }
 
     //console.log(data);
+}
+
+
+
+function collectSelectedProperties()
+{
+    var checkboxes = document.getElementsByName("radios2");
+
+    var selectedProps = [];
+
+    for (var i = 0; i < checkboxes.length; i++)
+    {
+        if (checkboxes[i].checked)
+            selectedProps.push(checkboxes[i].value);
+    }
 }
 
 
@@ -268,6 +311,12 @@ function ccwrotateClicked() {
 }
 function cwrotateClicked() {
     selectedShapeProperty = "cwrotate";
+}
+function movexClicked() {
+    selectedShapeProperty = "movex";
+}
+function moveyClicked() {
+    selectedShapeProperty = "movey";
 }
 
 

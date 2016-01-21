@@ -82,6 +82,9 @@
 .cwrotate-radio{background-image:url(../Images/rotate-clockwise.png);}
 .ccwrotate-radio{background-image:url(../Images/rotate-counterclockwise.png);}
 .angel-radio{background-image:url(../Images/angel.png);}
+.movex-radio{background-image:url(../Images/move-xaxis.png);}
+.movey-radio{background-image:url(../Images/move-yaxis.png);}
+
 
 .rradio{
     cursor:pointer;

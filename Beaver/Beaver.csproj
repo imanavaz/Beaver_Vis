@@ -72,6 +72,8 @@
     <Content Include="Images\color.png" />
     <Content Include="Images\height.png" />
     <Content Include="Images\line.png" />
+    <Content Include="Images\move-xaxis.png" />
+    <Content Include="Images\move-yaxis.png" />
     <Content Include="Images\radius.png" />
     <Content Include="Images\rect.png" />
     <Content Include="Images\rotate-clockwise.png" />
