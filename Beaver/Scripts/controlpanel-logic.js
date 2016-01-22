@@ -1,6 +1,7 @@
 ﻿var selectedShapeType = "rect";
 var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
+var shapeAlignment = "aleft";
 
 
 function updateShapeByCell(shape, i, j) {
@@ -323,8 +324,21 @@ function movexClicked() {
 function moveyClicked() {
     selectedShapeProperty = "movey";
 }
-
-
+function aleftClicked() {
+    shapeAlignment = "aleft";
+}
+function arightClicked() {
+    shapeAlignment = "aright";
+}
+function acenterClicked() {
+    shapeAlignment = "acenter";
+}
+function atopClicked() {
+    shapeAlignment = "atop";
+}
+function abottomClicked() {
+    shapeAlignment = "abottom";
+}
 
 function clearCanvas()
 {

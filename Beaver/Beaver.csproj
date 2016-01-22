@@ -66,9 +66,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\align-bottom.png" />
     <Content Include="Images\align-center.png" />
     <Content Include="Images\align-left.png" />
     <Content Include="Images\align-right.png" />
+    <Content Include="Images\align-top.png" />
     <Content Include="Images\angel.png" />
     <Content Include="Images\beaver-icon.jpg" />
     <Content Include="Images\circle.png" />
