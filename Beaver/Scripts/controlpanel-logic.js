@@ -5,24 +5,27 @@ var currShape;//to keep the shpae being designed
 
 function updateShapeByCell(shape, i, j) {
 
-    collectSelectedProperties();
+    var props = collectSelectedProperties();
 
-    if ((selectedShapeProperty == "height") && (selectedShapeType == "rect")) {
+    for (var count = 0; count < props.length; count++)
+        {
+
+        if ((props[count] == "height") && (selectedShapeType == "rect")) {
             shape.attr({
                 height: dataGrid.getDataAtCell(i, j)
             })
     }
-    else if ((selectedShapeProperty == "width") && (selectedShapeType == "rect")) {
+        else if ((props[count] == "width") && (selectedShapeType == "rect")) {
         shape.attr({
             width: dataGrid.getDataAtCell(i, j)
         })
     }
-   else if ((selectedShapeProperty == "radius") && (selectedShapeType == "circle")) {
+        else if ((props[count] == "radius") && (selectedShapeType == "circle")) {
             shape.attr({
                 r: dataGrid.getDataAtCell(i, j)
             })
         }
-   else if ((selectedShapeType == "line") && (selectedShapeProperty == "slope")) {
+        else if ((selectedShapeType == "line") && (props[count] == "slope")) {
        var teta = dataGrid.getDataAtCell(i, j) * (Math.PI / 180);
        
        var l = Math.floor(shape.getTotalLength()/2);
@@ -38,7 +41,7 @@ function updateShapeByCell(shape, i, j) {
        shape.attr("path", pathString);
        
        //console.log(pathString);
-   } else if ((selectedShapeType == "line") && (selectedShapeProperty == "angel"))
+        } else if ((selectedShapeType == "line") && (props[count] == "angel"))
    {
        var teta = dataGrid.getDataAtCell(i, j) * (Math.PI / 180) * -1; //-1 for counter clockwise
        var len = parseInt(shape.getTotalLength() / 4); //half the lenght
@@ -54,25 +57,25 @@ function updateShapeByCell(shape, i, j) {
 
        //console.log(shape.getTotalLength());
 
-   } else if ((selectedShapeProperty == "cwrotate"))
+        } else if ((props[count] == "cwrotate"))
    {
        shape.transform("r"+ dataGrid.getDataAtCell(i, j));
 
-   }else if ((selectedShapeProperty == "ccwrotate"))
+        } else if ((props[count] == "ccwrotate"))
    {
        shape.transform("r" + (-dataGrid.getDataAtCell(i, j)));
    }
-   else if ((selectedShapeProperty == "movex")) {
+        else if ((props[count] == "movex")) {
        shape.transform("t" + (dataGrid.getDataAtCell(i, j))+",0");
    }
-   else if ((selectedShapeProperty == "movey")) {
+        else if ((props[count] == "movey")) {
        shape.transform("t0," + (dataGrid.getDataAtCell(i, j)));
    }
    else
    {
-       console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
+            console.log("Combination of " + selectedShapeType + " and " + props[count] + " has not been implemented!");
    }
-
+    }
    return shape;
 }
 
@@ -210,7 +213,7 @@ function cloneByColumn(data) {
             else if ((selectedShapeProperty == "ccwrotate")) {
 
                 shape = tempshape.clone();
-                shape.transform("r" + (-data[i]));
+                shape.transform("...r" + (-data[i]));
 
                 shape.click(function () {
                     currShape = shape;
@@ -220,7 +223,7 @@ function cloneByColumn(data) {
             else if ((selectedShapeProperty == "cwrotate")) {
 
                 shape = tempshape.clone();
-                shape.transform("r" + (data[i]));
+                shape.transform("...r" + (data[i]));
 
                 shape.click(function () {
                     currShape = shape;
@@ -230,7 +233,7 @@ function cloneByColumn(data) {
             else if ((selectedShapeProperty == "movex")) {
 
                 shape = tempshape.clone();
-                shape.transform("t" + (data[i])+",0");
+                shape.transform("...t" + (data[i])+",0");
 
                 shape.click(function () {
                     currShape = shape;
@@ -240,7 +243,7 @@ function cloneByColumn(data) {
             else if ((selectedShapeProperty == "movey")) {
 
                 shape = tempshape.clone();
-                shape.transform("t0," + (data[i]));
+                shape.transform("...t0," + (data[i]));
 
                 shape.click(function () {
                     currShape = shape;
@@ -270,6 +273,8 @@ function collectSelectedProperties()
         if (checkboxes[i].checked)
             selectedProps.push(checkboxes[i].value);
     }
+
+    return selectedProps;
 }
 
 
