@@ -1,15 +1,31 @@
 ﻿html, body {
     height: 100%;
-    margin: 20px;
+    margin: 10px;
     padding: 0;
     font-family: 'Roboto','sans-serif';
 }
 
 
 #wrapper {
-    height: 60%;
+    height: 65%;
     width: 100%;
     clear: both;
+}
+
+fieldset {
+    font-family: sans-serif;
+    border: 2px solid #2874A6;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+fieldset legend {
+    /*background: #1F497D;*/
+    color: #2874A6;
+    padding: 2px 2px ;
+    border-radius: 5px;
+    /*box-shadow: 0 0 0 2px #fff;*/
+    margin-left: 10px;
 }
 
 #control-panel {
@@ -40,7 +56,7 @@
 }
 
 #data-panel {
-    height: 40%;
+    height: 35%;
     width: 100%;
     margin: 10px;
     clear: both;
