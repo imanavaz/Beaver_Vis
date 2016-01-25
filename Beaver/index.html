@@ -8,129 +8,130 @@
     <!--Styles-->
     <link rel="stylesheet" type="text/css" href="Styles/styles.css" />
     <link rel="stylesheet" type="text/css" href="Styles/handsontable.full.css" />
-    
+
     <!--API and Libraries-->
     <script type="text/javascript" src="Lib/tabletop.js"></script>
     <script type="text/javascript" src="Lib/handsontable.full.js"></script>
-    <script type="text/javascript" src="Lib/raphael-min.js" ></script>
+    <script type="text/javascript" src="Lib/raphael-min.js"></script>
 
 
     <!--My Code-->
-    <script type="text/javascript" src="Scripts/layoutManagement.js" ></script>
-    <script type="text/javascript" src="Scripts/datagridlogic.js"></script>   
-    <script type="text/javascript" src="Scripts/controlpanel-logic.js" ></script>
-    
+    <script type="text/javascript" src="Scripts/layoutManagement.js"></script>
+    <script type="text/javascript" src="Scripts/datagridlogic.js"></script>
+    <script type="text/javascript" src="Scripts/controlpanel-logic.js"></script>
+
 
 </head>
 <body>
 
+    <!--Vis control panel-->
+    <div id="control-panel">
+        <section>
+            <fieldset>
+                <legend><b> Shapes </b> </legend>
+                <div class="radio-toolbar">
+                    <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()" checked="checked">
+                    <label for="rect-radio" class="rradio rect-radio" title="rectangle"></label>
+
+                    <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
+                    <label for="line-radio" class="rradio line-radio" title="line"></label>
+
+                    <input type="radio" id="circle-radio" name="radios" value="circle" onclick="circleClicked()">
+                    <label for="circle-radio" class="rradio circle-radio" title="circle"></label>
+                </div>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <legend>
+                    <b>Properties :</b>
+                </legend>
+                <div id="properties-panel" class="radio-toolbar">
+                    <input type="checkbox" id="height-radio" name="radios2" value="height" onclick="heightClicked()">
+                    <label for="height-radio" class="rradio height-radio" title="height"></label>
+
+                    <input type="checkbox" id="width-radio" name="radios2" value="width" onclick="widthClicked()">
+                    <label for="width-radio" class="rradio width-radio" title="width"></label>
+
+                    <input type="checkbox" id="radius-radio" name="radios2" value="radius" onclick="radiusClicked()">
+                    <label for="radius-radio" class="rradio radius-radio" title="radius"></label>
+                    <br />
+                    <input type="checkbox" id="movex-radio" name="radios2" value="movex" onclick="movexClicked()">
+                    <label for="movex-radio" class="rradio movex-radio" title="move horizontally"></label>
+
+                    <input type="checkbox" id="movey-radio" name="radios2" value="movey" onclick="moveyClicked()">
+                    <label for="movey-radio" class="rradio movey-radio" title="move vertically"></label>
+
+                    <input type="checkbox" id="angel-radio" name="radios2" value="angel" onclick="angelClicked()">
+                    <label for="angel-radio" class="rradio angel-radio" title="angel"></label>
+                    <br />
+                    <input type="checkbox" id="slope-radio" name="radios2" value="slope" onclick="slopeClicked()">
+                    <label for="slope-radio" class="rradio slope-radio" title="slope"></label>
+
+                    <input type="checkbox" id="cwrotate-radio" name="radios2" value="cwrotate" onclick="cwrotateClicked()">
+                    <label for="cwrotate-radio" class="rradio cwrotate-radio" title="rotate clockwise"></label>
+
+                    <input type="checkbox" id="ccwrotate-radio" name="radios2" value="ccwrotate" onclick="ccwrotateClicked()">
+                    <label for="ccwrotate-radio" class="rradio ccwrotate-radio" title="rotate counter-clockwise"></label>
+                    <br />
+                    <input type="checkbox" id="color-radio" name="radios2" value="color" onclick="colorClicked()">
+                    <label for="color-radio" class="rradio color-radio" title="color"></label>
+                </div>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <legend>
+                    <b>Layout :</b>
+                </legend>
+                <div class="radio-toolbar">
+                    <input type="radio" id="aleft-radio" name="radios3" value="aleft" onclick="aleftClicked()" checked="checked">
+                    <label for="aleft-radio" class="rradio aleft-radio" title="Align left"></label>
+
+                    <input type="radio" id="aright-radio" name="radios3" value="aright" onclick="arightClicked()">
+                    <label for="aright-radio" class="rradio aright-radio" title="Align right"></label>
+
+                    <input type="radio" id="acenter-radio" name="radios3" value="acenter" onclick="acenterClicked()">
+                    <label for="acenter-radio" class="rradio acenter-radio" title="Align centers"></label>
+                    <br />
+                    <input type="radio" id="atop-radio" name="radios3" value="atop" onclick="atopClicked()">
+                    <label for="atop-radio" class="rradio atop-radio" title="Align top"></label>
+
+                    <input type="radio" id="abottom-radio" name="radios3" value="abottom" onclick="abottomClicked()">
+                    <label for="abottom-radio" class="rradio abottom-radio" title="Align bottom"></label>
+
+                </div>
+            </fieldset>
+        </section>
+
+
+        <button type="button" class="redButton" onclick="clearCanvas()">Clear Canvas</button>
+        <!--button type="button" class="generalButton" onclick="myFunction2()">Apply on Column</button-->
+
+        <section>
+            <fieldset id="interactions-fieldset">
+                <legend><b> Interactions </b> </legend>
+            </fieldset>
+        </section>
+
+    </div>
+
     <div id="wrapper">
 
-        <!--Vis control panel-->        
-        <div id="control-panel">
-            <section>
-                <fieldset>
-                    <legend><b> Shapes </b> </legend>
-                    <div class="radio-toolbar">
-                        <input type="radio" id="rect-radio" name="radios" value="rect" onclick="rectClicked()" checked="checked">
-                        <label for="rect-radio" class="rradio rect-radio" title="rectangle"></label>
-
-                        <input type="radio" id="line-radio" name="radios" value="line" onclick="lineClicked()">
-                        <label for="line-radio" class="rradio line-radio" title="line"></label>
-
-                        <input type="radio" id="circle-radio" name="radios" value="circle" onclick="circleClicked()">
-                        <label for="circle-radio" class="rradio circle-radio" title="circle"></label>
-                    </div>
-                </fieldset>
-            </section>
-
-            <section>
-                <fieldset>
-                    <legend>
-                        <b>Properties :</b>
-                    </legend>
-                    <div id="properties-panel" class="radio-toolbar">
-                        <input type="checkbox" id="height-radio" name="radios2" value="height" onclick="heightClicked()">
-                        <label for="height-radio" class="rradio height-radio" title="height"></label>
-
-                        <input type="checkbox" id="width-radio" name="radios2" value="width" onclick="widthClicked()">
-                        <label for="width-radio" class="rradio width-radio" title="width"></label>
-
-                        <input type="checkbox" id="radius-radio" name="radios2" value="radius" onclick="radiusClicked()">
-                        <label for="radius-radio" class="rradio radius-radio" title="radius"></label>
-                        <br />
-                        <input type="checkbox" id="movex-radio" name="radios2" value="movex" onclick="movexClicked()">
-                        <label for="movex-radio" class="rradio movex-radio" title="move horizontally"></label>
-
-                        <input type="checkbox" id="movey-radio" name="radios2" value="movey" onclick="moveyClicked()">
-                        <label for="movey-radio" class="rradio movey-radio" title="move vertically"></label>
-
-                        <input type="checkbox" id="angel-radio" name="radios2" value="angel" onclick="angelClicked()">
-                        <label for="angel-radio" class="rradio angel-radio" title="angel"></label>
-                        <br />
-                        <input type="checkbox" id="slope-radio" name="radios2" value="slope" onclick="slopeClicked()">
-                        <label for="slope-radio" class="rradio slope-radio" title="slope"></label>
-
-                        <input type="checkbox" id="cwrotate-radio" name="radios2" value="cwrotate" onclick="cwrotateClicked()">
-                        <label for="cwrotate-radio" class="rradio cwrotate-radio" title="rotate clockwise"></label>
-
-                        <input type="checkbox" id="ccwrotate-radio" name="radios2" value="ccwrotate" onclick="ccwrotateClicked()">
-                        <label for="ccwrotate-radio" class="rradio ccwrotate-radio" title="rotate counter-clockwise"></label>
-                        <br />
-                        <input type="checkbox" id="color-radio" name="radios2" value="color" onclick="colorClicked()">
-                        <label for="color-radio" class="rradio color-radio" title="color"></label>
-                    </div>
-                </fieldset>
-            </section>
-
-            <section>
-                <fieldset>
-                    <legend>
-                        <b>Layout :</b></legend>
-                        <div class="radio-toolbar">
-                            <input type="radio" id="aleft-radio" name="radios3" value="aleft" onclick="aleftClicked()" checked="checked">
-                            <label for="aleft-radio" class="rradio aleft-radio" title="Align left"></label>
-
-                            <input type="radio" id="aright-radio" name="radios3" value="aright" onclick="arightClicked()">
-                            <label for="aright-radio" class="rradio aright-radio" title="Align right"></label>
-
-                            <input type="radio" id="acenter-radio" name="radios3" value="acenter" onclick="acenterClicked()">
-                            <label for="acenter-radio" class="rradio acenter-radio" title="Align centers"></label>
-                            <br />
-                            <input type="radio" id="atop-radio" name="radios3" value="atop" onclick="atopClicked()">
-                            <label for="atop-radio" class="rradio atop-radio" title="Align top"></label>
-
-                            <input type="radio" id="abottom-radio" name="radios3" value="abottom" onclick="abottomClicked()">
-                            <label for="abottom-radio" class="rradio abottom-radio" title="Align bottom"></label>
-
-                        </div>
-                    </fieldset>
-                </section>
-
-               
-                <button type="button" class="redButton" onclick="clearCanvas()">Clear Canvas</button>
-                <!--button type="button" class="generalButton" onclick="myFunction2()">Apply on Column</button-->
-
-
-        </div>
-
-
-
         <!--Canvas-->
-        <div id="drawing-area" > 
+        <div id="drawing-area">
             <script type="text/javascript" src="Scripts/canvaslogic.js"></script>
         </div>
 
-    </div>
+        <!--Data panel-->
+        <div id="data-panel">
 
-    <!--Data panel-->
-    <div id="data-panel">
-        
-        <div id="myGrid" style="width:100%;height:400px;" class="dataTable" ></div>
-        
-    </div>
+            <div id="myGrid" style="width:100%;height:400px;" class="dataTable"></div>
 
-    
+        </div>
+    </div>
 
 </body>
 </html>

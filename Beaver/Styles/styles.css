@@ -7,9 +7,9 @@
 
 
 #wrapper {
-    height: 65%;
-    width: 100%;
-    clear: both;
+    height:100%;
+    width: 80%;
+    float: right;
 }
 
 fieldset {
@@ -26,6 +26,15 @@ fieldset legend {
     border-radius: 5px;
     /*box-shadow: 0 0 0 2px #fff;*/
     margin-left: 10px;
+}
+
+#interactions-fieldset {
+    min-height : 200px;
+    border: 2px solid #5D6D7E;
+}
+
+#interactions-fieldset legend {
+    color: #5D6D7E;
 }
 
 #control-panel {
@@ -49,16 +58,15 @@ fieldset legend {
 }
 
 #drawing-area {
-    width: 80%;
-    height: 100%;
-    float: right;
+    width: 100%;
+    height: 70%;
     background: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFklEQVQIW2NkQAOM+ASMGRgYzmKoAAATugEFEuyN6AAAAABJRU5ErkJggg== ) repeat;
 }
 
 #data-panel {
-    height: 35%;
-    width: 100%;
-    margin: 10px;
+    height: 100%;
+    width: 30%;
+    margin: 2px;
     clear: both;
 }
 
