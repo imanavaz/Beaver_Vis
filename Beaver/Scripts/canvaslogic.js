@@ -6,10 +6,7 @@ var eventStartPointY;
 var eventEndPointX;
 var eventEndPointY;
 
-var ox = null;
-var oy = null;
-
-var eventFlag = "";
+var refDimention = null;
 
 /*Mouse Events*/
 
@@ -66,12 +63,18 @@ paper.canvas.onmouseup = function (event) {
             rect.hover(hoverIn, hoverOut, rect, rect);
             
             var ft = paper.freeTransform(rect, { keepRatio: true }, function (ft, events) {
-                //console.log(ft.attrs);
+
+                infareInteraction(ft.attrs);//compare attributes and infare interaction
                 //console.log(events);
                 //if (events.indexOf('drag start') != -1) {
                 //    eventFlag = false;
                 //}
             });
+            
+
+            refDimention = ft.attrs;
+            //console.log("ref:" + refDimention);
+
             // Show hidden freeTransform handles
             ft.showHandles();
 
@@ -90,7 +93,11 @@ paper.canvas.onmouseup = function (event) {
 
             var ft = paper.freeTransform(circle, { keepRatio: true }, function (ft, events) {
 
+                infareInteraction(ft.attrs);//compare attributes and infare interaction
+                
             });
+            
+            refDimention = ft.attrs; //base dimentions
 
             // Show hidden freeTransform handles
             ft.showHandles();
@@ -109,7 +116,11 @@ paper.canvas.onmouseup = function (event) {
 
             var ft = paper.freeTransform(path1, { keepRatio: true }, function (ft, events) {
                 
+                infareInteraction(ft.attrs);//compare attributes and infare interaction
+
             });
+
+            refDimention = ft.attrs; //base dimentions
 
             // Show hidden freeTransform handles
             ft.showHandles();
@@ -125,7 +136,10 @@ paper.canvas.onmouseup = function (event) {
 }
 
 
-
+function infareInteraction(attrs)
+{
+    console.log("infare func. : " + attrs);
+}
 
 
 
