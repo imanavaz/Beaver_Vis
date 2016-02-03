@@ -1,4 +1,5 @@
-﻿var selectedShapeType = "rect";
+﻿var shapeSelected = false;
+var selectedShapeType = "";
 var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
 var shapeAlignment = "aleft";
@@ -86,6 +87,7 @@ function myFunction2() //clone a shape using a shape and for a data range
     //applyOnGroup(currShape, 1, 1, 2, 2);
     cloneByColumn(currShape, selectedShapeType, selectedShapeProperty, 2);
 }
+
 
 function cloneByColumn(data) {
 
@@ -262,7 +264,6 @@ function cloneByColumn(data) {
 }
 
 
-
 function collectSelectedProperties()
 {
     var checkboxes = document.getElementsByName("radios2");
@@ -278,17 +279,48 @@ function collectSelectedProperties()
     return selectedProps;
 }
 
+function isShapeSelected() {
+    var checkboxes = document.getElementsByName("radios");
+
+    var selectedShape = null;
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked)
+            selectedShape = checkboxes[i].value;
+    }
+
+    return selectedShape;
+}
+
+function deselectShape(shapeName)
+{
+    var checkboxes = document.getElementsByName("radios");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].value == shapeName) {
+            checkboxes[i].checked = false;
+            shapeSelected = false;
+            return true;//shape is found and deselected
+        }
+    }
+
+    return false; //could not find shape radio button
+}
+
 
 
 /********Shapes*******/
 function lineClicked() {
     selectedShapeType = "line";
+    shapeSelected = true;
 }
 function circleClicked() {
     selectedShapeType = "circle";
+    shapeSelected = true;
 }
 function rectClicked() {
     selectedShapeType = "rect";
+    shapeSelected = true;
 }
 
 
