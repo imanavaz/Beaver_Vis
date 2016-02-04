@@ -108,11 +108,14 @@ fieldset legend {
 .angel-radio{background-image:url(../Images/angel.png);}
 .movex-radio{background-image:url(../Images/move-xaxis.png);}
 .movey-radio{background-image:url(../Images/move-yaxis.png);}
+.noalign-radio{background-image:url(../Images/noalignment.png);}
 .aleft-radio{background-image:url(../Images/align-left.png);}
 .aright-radio{background-image:url(../Images/align-right.png);}
 .acenter-radio{background-image:url(../Images/align-center.png);}
 .atop-radio{background-image:url(../Images/align-top.png);}
 .abottom-radio{background-image:url(../Images/align-bottom.png);}
+.static-radio{background-image:url(../Images/staticvis.png);}
+.anim-radio{background-image:url(../Images/animate-vis.gif);}
 
 .rradio{
     cursor:pointer;

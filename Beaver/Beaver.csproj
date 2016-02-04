@@ -72,6 +72,7 @@
     <Content Include="Images\align-right.png" />
     <Content Include="Images\align-top.png" />
     <Content Include="Images\angel.png" />
+    <Content Include="Images\animate-vis.gif" />
     <Content Include="Images\beaver-icon.jpg" />
     <Content Include="Images\circle.png" />
     <Content Include="Images\color.png" />
@@ -79,11 +80,13 @@
     <Content Include="Images\line.png" />
     <Content Include="Images\move-xaxis.png" />
     <Content Include="Images\move-yaxis.png" />
+    <Content Include="Images\noalignment.png" />
     <Content Include="Images\radius.png" />
     <Content Include="Images\rect.png" />
     <Content Include="Images\rotate-clockwise.png" />
     <Content Include="Images\rotate-counterclockwise.png" />
     <Content Include="Images\slope.png" />
+    <Content Include="Images\staticvis.png" />
     <Content Include="Images\width.png" />
     <Content Include="Lib\raphael-min.js" />
     <Content Include="Lib\raphael.free-transform.js" />

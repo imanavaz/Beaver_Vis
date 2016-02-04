@@ -2,7 +2,7 @@
 var selectedShapeType = "";
 var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
-var shapeAlignment = "aleft";
+var shapeAlignment = "nolign";
 
 
 function updateShapeByCell(shape, i, j) {
@@ -394,6 +394,9 @@ function atopClicked() {
 }
 function abottomClicked() {
     shapeAlignment = "abottom";
+}
+function noalignClicked() {
+    shapeAlignment = "noalign";
 }
 
 function clearCanvas()

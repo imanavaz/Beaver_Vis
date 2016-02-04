@@ -87,15 +87,18 @@
                     <b>Layout :</b>
                 </legend>
                 <div class="radio-toolbar">
-                    <input type="radio" id="aleft-radio" name="radios3" value="aleft" onclick="aleftClicked()" checked="checked">
+                    <input type="radio" id="noalign-radio" name="radios3" value="noalign" onclick="noalignClicked()" checked="checked">
+                    <label for="noalign-radio" class="rradio noalign-radio" title="No layout (default)"></label>
+                    
+                    <input type="radio" id="aleft-radio" name="radios3" value="aleft" onclick="aleftClicked()" >
                     <label for="aleft-radio" class="rradio aleft-radio" title="Align left"></label>
 
                     <input type="radio" id="aright-radio" name="radios3" value="aright" onclick="arightClicked()">
                     <label for="aright-radio" class="rradio aright-radio" title="Align right"></label>
-
+                    <br />
                     <input type="radio" id="acenter-radio" name="radios3" value="acenter" onclick="acenterClicked()">
                     <label for="acenter-radio" class="rradio acenter-radio" title="Align centers"></label>
-                    <br />
+                    
                     <input type="radio" id="atop-radio" name="radios3" value="atop" onclick="atopClicked()">
                     <label for="atop-radio" class="rradio atop-radio" title="Align top"></label>
 
@@ -106,15 +109,24 @@
             </fieldset>
         </section>
 
+        <section>
+            <fieldset id="finish-fieldset">
+                <legend><b> Visualization Finish </b> </legend>
+                <div class="radio-toolbar">
+                    <input type="radio" id="static-radio" name="radios4" value="staticvis" onclick="staticClicked()" checked="checked">
+                    <label for="static-radio" class="rradio static-radio" title="Static laid-out visualization"></label>
+
+                    <input type="radio" id="anim-radio" name="radios4" value="animate" onclick="animateClicked()">
+                    <label for="anim-radio" class="rradio anim-radio" title="Animated visualization"></label>
+                </div>
+            </fieldset>
+        </section>
+
 
         <button type="button" class="redButton" onclick="clearCanvas()">Clear Canvas</button>
         <!--button type="button" class="generalButton" onclick="myFunction2()">Apply on Column</button-->
 
-        <section>
-            <fieldset id="interactions-fieldset">
-                <legend><b> Interactions </b> </legend>
-            </fieldset>
-        </section>
+       
 
     </div>
 
