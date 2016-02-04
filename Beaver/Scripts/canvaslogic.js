@@ -6,7 +6,7 @@ var eventStartPointY;
 var eventEndPointX;
 var eventEndPointY;
 
-var refDimention = null;
+var refAttrs = null;
 
 /*Mouse Events*/
 
