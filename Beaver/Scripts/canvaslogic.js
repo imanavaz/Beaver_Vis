@@ -165,7 +165,10 @@ function infareInteraction(attrs, refs)
     //console.log(refs);
     //console.log(alteredProps);
 
+    deactivateProperties();
     activateProperties(alteredProps);
+
+    
 }
 
 

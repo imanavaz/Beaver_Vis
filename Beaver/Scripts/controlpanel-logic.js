@@ -300,6 +300,16 @@ function enableProperty(property) {
 }
 
 
+function deactivateProperties() {
+    var checkboxes = document.getElementsByName("radios2");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+}
+
+
+
 
 function isShapeSelected() {
     var checkboxes = document.getElementsByName("radios");
@@ -419,3 +429,11 @@ function clearCanvas()
 
 //    //console.log(data);
 //}
+
+
+
+
+/************************************/
+/*      Drag and Drop on Radios     */
+/************************************/
+
