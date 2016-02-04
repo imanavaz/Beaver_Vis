@@ -279,6 +279,28 @@ function collectSelectedProperties()
     return selectedProps;
 }
 
+
+function activateProperties(propsList)
+{
+    for (var i = 0; i < propsList.length; i++) {
+        enableProperty(propsList[i]);
+    }
+}
+
+function enableProperty(property) {
+    var checkboxes = document.getElementsByName("radios2");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].value == property)
+        {
+            checkboxes[i].checked = true;
+            return;
+        }
+    }
+}
+
+
+
 function isShapeSelected() {
     var checkboxes = document.getElementsByName("radios");
 
@@ -306,6 +328,8 @@ function deselectShape(shapeName)
 
     return false; //could not find shape radio button
 }
+
+
 
 
 
