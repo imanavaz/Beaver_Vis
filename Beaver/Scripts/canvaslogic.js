@@ -62,7 +62,8 @@ paper.canvas.onmouseup = function (event) {
 
             rect.hover(hoverIn, hoverOut, rect, rect);
             
-            var ft = paper.freeTransform(rect, { keepRatio: true }, function (ft, events) {
+            var ft = paper.freeTransform(rect,
+                    { rotate: 'axisX', scale: ['bboxCorners', 'bboxSides'], keepRatio: 'bboxCorners', draw: 'bbox' }, function (ft, events) {
 
                 infareInteraction(events);//analyse events and infare interaction
                 //console.log(events);
@@ -91,7 +92,7 @@ paper.canvas.onmouseup = function (event) {
 
             circle.hover(hoverIn, hoverOut, circle, circle);
 
-            var ft = paper.freeTransform(circle, { keepRatio: true }, function (ft, events) {
+            var ft = paper.freeTransform(circle, { rotate: 'axisX', scale: ['bboxCorners', 'bboxSides'], keepRatio: 'bboxCorners', draw: 'bbox' }, function (ft, events) {
 
                 infareInteraction(events);//analyse events and infare interaction
                 
@@ -112,7 +113,7 @@ paper.canvas.onmouseup = function (event) {
 
             path1.hover(hoverInPath, hoverOutPath, path1, path1);
 
-            var ft = paper.freeTransform(path1, { keepRatio: true }, function (ft, events) {
+            var ft = paper.freeTransform(path1, { rotate: 'axisX', scale: ['bboxCorners', 'bboxSides'], keepRatio: 'bboxCorners', draw: 'bbox' }, function (ft, events) {
                 
                 infareInteraction(events);//analyse events and infare interaction
 
