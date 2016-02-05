@@ -6,7 +6,7 @@ var eventStartPointY;
 var eventEndPointX;
 var eventEndPointY;
 
-var refAttrs = null;
+//var refAttrs = null;
 
 /*Mouse Events*/
 
@@ -64,7 +64,7 @@ paper.canvas.onmouseup = function (event) {
             
             var ft = paper.freeTransform(rect, { keepRatio: true }, function (ft, events) {
 
-                infareInteraction(ft.attrs, refAttrs);//compare attributes and infare interaction
+                infareInteraction(events);//analyse events and infare interaction
                 //console.log(events);
                 //if (events.indexOf('drag start') != -1) {
                 //    eventFlag = false;
@@ -72,7 +72,7 @@ paper.canvas.onmouseup = function (event) {
             });
             
 
-            refAttrs = (cloneObject(ft.attrs)); //base attributes
+            //refAttrs = (cloneObject(ft.attrs)); //base attributes
             //console.log("ref:" + refDimention);
 
             // Show hidden freeTransform handles
@@ -93,12 +93,10 @@ paper.canvas.onmouseup = function (event) {
 
             var ft = paper.freeTransform(circle, { keepRatio: true }, function (ft, events) {
 
-                infareInteraction(ft.attrs, refAttrs);//compare attributes and infare interaction
+                infareInteraction(events);//analyse events and infare interaction
                 
             });
             
-            refAttrs = (cloneObject(ft.attrs)); //base attributes 
-
             // Show hidden freeTransform handles
             ft.showHandles();
 
@@ -116,11 +114,9 @@ paper.canvas.onmouseup = function (event) {
 
             var ft = paper.freeTransform(path1, { keepRatio: true }, function (ft, events) {
                 
-                infareInteraction(ft.attrs, refAttrs);//compare attributes and infare interaction
+                infareInteraction(events);//analyse events and infare interaction
 
             });
-
-            refAttrs = (cloneObject(ft.attrs)); //base attributes
 
             // Show hidden freeTransform handles
             ft.showHandles();
@@ -136,39 +132,31 @@ paper.canvas.onmouseup = function (event) {
 }
 
 
-function infareInteraction(attrs, refs)
+function infareInteraction(events)
 {
     var alteredProps = [];
 
-    //move x -> center.x or x
-    if (Math.abs(attrs.translate.x - refs.translate.x) > 1)
+    if ((events.indexOf("drag end") != -1))// || (events.indexOf("drag end") != -1))
+    {
         alteredProps.push("movex");
-
-    //move y -> center.y or y
-    if (Math.abs(attrs.translate.y - refs.translate.y) > 1)
         alteredProps.push("movey");
+    }
 
-    //rotate -> rotate
-    if (Math.abs(attrs.rotate - refs.rotate) > 1) {
+    if ((events.indexOf("rotate end") != -1) )//|| (events.indexOf("drag end") != -1)) {
+    {
         alteredProps.push("ccwrotate");
         alteredProps.push("cwrotate");
     }
 
-    //height -> scale.y or current size.y
-    if (Math.abs(attrs.scale.y - refs.scale.y) > 1)
+    if ((events.indexOf("scale end") != -1))// || (events.indexOf("drag end") != -1)) {
+    {
         alteredProps.push("height");
-    //width -> scale.x or current size.x
-    if (Math.abs(attrs.scale.x - refs.scale.x) > 1)
         alteredProps.push("width");
-    
-    //console.log(attrs);
-    //console.log(refs);
-    //console.log(alteredProps);
-
+    }
+   
     deactivateProperties();
     activateProperties(alteredProps);
-
-    
+        
 }
 
 
