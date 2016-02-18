@@ -76,6 +76,7 @@
     <Content Include="Images\beaver-icon.jpg" />
     <Content Include="Images\circle.png" />
     <Content Include="Images\color.png" />
+    <Content Include="Images\data-img.png" />
     <Content Include="Images\height.png" />
     <Content Include="Images\line.png" />
     <Content Include="Images\move-xaxis.png" />

@@ -1,4 +1,6 @@
 ﻿var paper = Raphael(document.getElementById("drawing-area"), "100%", "100%");
+var visarea = Raphael(document.getElementById("vis-area"), "100%", "100%");
+
 
 var eventStartPointX;
 var eventStartPointY;
@@ -23,25 +25,6 @@ paper.canvas.onmousedown = function(event) {
     }
     //console.log('Down: ' + eventStartPointX, eventStartPointY);
 };
-
-
-var hoverIn = function () {
-    this.attr({ "fill": "#E3E3E3" });
-};
-
-
-var hoverOut = function () {
-    this.attr({ "fill": "#FFF" });
-}
-
-var hoverInPath = function () {
-    this.attr({ "stroke": "#566573" });
-};
-
-
-var hoverOutPath = function () {
-    this.attr({ "stroke": "#000" });
-}
 
 
 paper.canvas.onmouseup = function (event) {
@@ -133,6 +116,26 @@ paper.canvas.onmouseup = function (event) {
 }
 
 
+
+var hoverIn = function () {
+    this.attr({ "fill": "#E3E3E3" });
+};
+
+var hoverOut = function () {
+    this.attr({ "fill": "#FFF" });
+}
+
+var hoverInPath = function () {
+    this.attr({ "stroke": "#566573" });
+};
+
+var hoverOutPath = function () {
+    this.attr({ "stroke": "#000" });
+}
+
+
+
+
 function infareInteraction(events)
 {
     var alteredProps = [];
@@ -159,7 +162,6 @@ function infareInteraction(events)
     activateProperties(alteredProps);
         
 }
-
 
 
 function cloneObject(obj) {

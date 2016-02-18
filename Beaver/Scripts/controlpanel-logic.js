@@ -3,7 +3,7 @@ var selectedShapeType = "";
 var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
 var shapeAlignment = "nolign";
-
+var visType = "static";
 
 function updateShapeByCell(shape, i, j) {
 
@@ -82,14 +82,19 @@ function updateShapeByCell(shape, i, j) {
 }
 
 
-function myFunction2() //clone a shape using a shape and for a data range 
+function generateVisualization(data) //clone a shape using a shape and for a data range 
 {
     //applyOnGroup(currShape, 1, 1, 2, 2);
-    cloneByColumn(currShape, selectedShapeType, selectedShapeProperty, 2);
+    if (visType == "static")
+        cloneByColumnStatic(currShape, selectedShapeType, selectedShapeProperty, 2);
+    else if (visType == "animated")
+        cloneByColumnAnimated(currShape, selectedShapeType, selectedShapeProperty, 2);
 }
 
 
-function cloneByColumn(data) {
+
+
+function cloneByColumnStatic(data) {
 
     //var data = dataGrid.getDataAtCol(column);
 
@@ -279,7 +284,6 @@ function collectSelectedProperties()
     return selectedProps;
 }
 
-
 function activateProperties(propsList)
 {
     for (var i = 0; i < propsList.length; i++) {
@@ -299,7 +303,6 @@ function enableProperty(property) {
     }
 }
 
-
 function deactivateProperties() {
     var checkboxes = document.getElementsByName("radios2");
 
@@ -307,8 +310,6 @@ function deactivateProperties() {
         checkboxes[i].checked = false;
     }
 }
-
-
 
 
 function isShapeSelected() {
@@ -340,7 +341,14 @@ function deselectShape(shapeName)
 }
 
 
-
+function clearCanvas()
+{
+    paper.clear();//clear canvas
+    
+    //selectedShapeType = "rect";
+    //selectedShapeProperty = "";
+    //currShape = "";
+}
 
 
 /********Shapes*******/
@@ -356,7 +364,6 @@ function rectClicked() {
     selectedShapeType = "rect";
     shapeSelected = true;
 }
-
 
 
 /********Properties*******/
@@ -409,26 +416,16 @@ function noalignClicked() {
     shapeAlignment = "noalign";
 }
 
-function clearCanvas()
+
+/********Visualization Type*******/
+function staticClicked()
 {
-    paper.clear();//clear canvas
-    //selectedShapeType = "rect";
-    //selectedShapeProperty = "";
-    //currShape = "";
-
+    visType = "static";
 }
-
-
-//function myFunction()//apply a property on a specific shape
-//{
-//    updateShapeByCell(currShape, 0, 2);
-//}
-
-//function applyOnGroup(shape, fromRow, fromColumn, toRow, toColomn) {
-//    var data = dataGrid.getData(fromRow, fromColumn, toRow, toColomn);
-
-//    //console.log(data);
-//}
+function animateClicked()
+{
+    visType = "animated";
+}
 
 
 

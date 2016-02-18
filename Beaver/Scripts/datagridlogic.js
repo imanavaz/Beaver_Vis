@@ -1,5 +1,6 @@
 ﻿var dataGrid;
 var container;
+var selectedData = null;
 
 window.onload = function () { initGrid() };
 
@@ -14,6 +15,8 @@ function initGrid() {
         callback: showInfo,
         simpleSheet: true
     })
+
+
 
     
 }
@@ -56,15 +59,32 @@ function processSelection (r, c, r2, c2)
     else if ((r != r2) && (c == c2)) //column has been selected
     {
         var data = dataGrid.getData(r, c, r2, c2);
-        cloneByColumn(data);
+        generateVisualization(data);
     }
     else if ((r == r2) && (c != c2)) //row has been selected
     {
         var data = dataGrid.getData(r, c, r2, c2);
-        cloneByColumn(data);
+        generateVisualization(data);
     }
     else
     {
         console.log("Matrix application has not been implemented yet!");
     }
 }
+
+/*function dragstart_handler(ev)
+{
+    console.log("dragStart");
+    // Add the target element's id to the data transfer object
+    ev.dataTransfer.setData("text/plain", selectedData);
+
+    // Create an image and then use it for the drag image.
+    var img = new Image();
+    img.src = '../Images/data-img.png';
+    ev.dataTransfer.setDragImage(img, 10, 10);
+
+    // Set the drag effect to copy
+    ev.dataTransfer.dropEffect = "copy";
+
+
+}*/

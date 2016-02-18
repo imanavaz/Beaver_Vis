@@ -110,13 +110,13 @@
         </section>
 
         <section>
-            <fieldset id="finish-fieldset">
+            <fieldset id="visType-fieldset">
                 <legend><b> Finish </b> </legend>
                 <div class="radio-toolbar">
-                    <input type="radio" id="static-radio" name="radios4" value="staticvis" onclick="staticClicked()" checked="checked">
+                    <input type="radio" id="static-radio" name="radios4" value="static" onclick="staticClicked()" checked="checked">
                     <label for="static-radio" class="rradio static-radio" title="Static laid-out visualization"></label>
 
-                    <input type="radio" id="anim-radio" name="radios4" value="animate" onclick="animateClicked()">
+                    <input type="radio" id="anim-radio" name="radios4" value="animated" onclick="animateClicked()">
                     <label for="anim-radio" class="rradio anim-radio" title="Animated visualization"></label>
                 </div>
             </fieldset>
@@ -135,6 +135,9 @@
         <!--Canvas-->
         <div id="drawing-area">
             <script type="text/javascript" src="Scripts/canvaslogic.js"></script>
+        </div>
+
+        <div id="vis-area">
         </div>
 
         <!--Data panel-->
