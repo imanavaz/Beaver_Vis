@@ -4,6 +4,7 @@ var selectedShapeProperty = "";
 var currShape;//to keep the shpae being designed
 var shapeAlignment = "nolign";
 var visType = "static";
+var visMargin = 10;
 
 function updateShapeByCell(shape, i, j) {
 
@@ -123,8 +124,8 @@ function cloneByColumnStatic(data) {
             if ((isPropertySelected("height")) && (selectedShapeType == "rect")) {
 
                 shape = visarea.rect().attr({
-                    x : 2 + (i * (tempshapeBBox.width+2)), 
-                    y : 2, 
+                    x : visMargin + (i * (tempshapeBBox.width+2)), 
+                    y : visMargin, 
                     width : tempshapeBBox.width, 
                     height : data[i],
                     fill: "orange"
@@ -145,8 +146,8 @@ function cloneByColumnStatic(data) {
             {
 
                 shape = visarea.rect().attr({
-                    x: 2, 
-                    y: 2 + (i * (tempshapeBBox.height + 2)),
+                    x: visMargin, 
+                    y: visMargin + (i * (tempshapeBBox.height + 2)),
                     width: data[i],
                     height: tempshapeBBox.height,
                     fill: "orange"
@@ -323,7 +324,8 @@ function deselectShape(shapeName)
 function clearCanvas()
 {
     paper.clear();//clear canvas
-    
+    clearVisualization();
+
     //selectedShapeType = "rect";
     //selectedShapeProperty = "";
     //currShape = "";

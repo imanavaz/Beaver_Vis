@@ -51,12 +51,12 @@ function processSelection (r, c, r2, c2)
 
     if ((r == r2) && (c == c2))//one cel has been selected
     {
-        if (currShape != null)
-            updateShapeByCell(currShape, r, c);
+        //if (currShape != null)
+        //    updateShapeByCell(currShape, r, c);
         //else
         //    console.log("No shape has been defined!");
-        //var data = dataGrid.getData(r, c, r2, c2);
-        //generateVisualization(data);
+        var data = dataGrid.getData(r, c, r2, c2);
+        generateVisualization(data);
     }
     else if ((r != r2) && (c == c2)) //column has been selected
     {
