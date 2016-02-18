@@ -5,13 +5,6 @@
     font-family: 'Roboto','sans-serif';
 }
 
-
-#wrapper {
-    height:100%;
-    width: 85%;
-    float: right;
-}
-
 fieldset {
     font-family: sans-serif;
     border: 2px solid #2874A6;
@@ -57,23 +50,36 @@ fieldset legend {
     background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%);
 }
 
+#wrapper {
+    height:100%;
+    width: 85%;
+    float: right;
+}
+
+#canvas-area {
+    height:75%;
+    width: 100%;
+    float:clear;
+}
+
+
 #drawing-area {
-    width: 50%;
-    height: 75%;
+    width:50%;
+    height:100%;
     background: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFklEQVQIW2NkQAOM+ASMGRgYzmKoAAATugEFEuyN6AAAAABJRU5ErkJggg== ) repeat;
-    float: left;
+    float:left;
 }
 
 #vis-area{
     width:50%;
-    height:75%;
+    height:100%;
+    float:right;
 }
 
 #data-panel {
     height: 25%;
     width: 100%;
     margin: 2px;
-    clear: both;
 }
 
 

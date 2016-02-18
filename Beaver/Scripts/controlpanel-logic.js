@@ -86,25 +86,23 @@ function generateVisualization(data) //clone a shape using a shape and for a dat
 {
     //applyOnGroup(currShape, 1, 1, 2, 2);
     if (visType == "static")
-        cloneByColumnStatic(currShape, selectedShapeType, selectedShapeProperty, 2);
+        cloneByColumnStatic(data);
     else if (visType == "animated")
         cloneByColumnAnimated(currShape, selectedShapeType, selectedShapeProperty, 2);
 }
-
-
-
 
 function cloneByColumnStatic(data) {
 
     //var data = dataGrid.getDataAtCol(column);
 
-    clearCanvas();
-
     var tempshape = currShape;
     var tempshapeBBox = tempshape.getBBox();
 
+    clearVisualization();//clear previous visualizations
+
     var i,
         len = data.length;
+
     for (i = 0; i < len; i++)
     {
         var shape;
@@ -113,19 +111,19 @@ function cloneByColumnStatic(data) {
         {
             if ((selectedShapeProperty == "height") && (selectedShapeType == "rect")) {
 
-                shape = paper.rect().attr({
-                    x : tempshapeBBox.x + (i * (tempshapeBBox.width+2)), 
-                    y : tempshapeBBox.y, 
+                shape = visarea.rect().attr({
+                    x : 2 + (i * (tempshapeBBox.width+2)), 
+                    y : 2, 
                     width : tempshapeBBox.width, 
                     height : data[i],
                     fill: "orange"
                 });
 
-                shape.click(function () {
-                    currShape = shape;
-                    selectedShapeType = "rect";
-                    document.getElementById("rect-radio").checked = true;
-                });
+                //shape.click(function () {
+                //    currShape = shape;
+                //    selectedShapeType = "rect";
+                //    document.getElementById("rect-radio").checked = true;
+                //});
 
                 //console.log(shape);
 
@@ -133,36 +131,36 @@ function cloneByColumnStatic(data) {
             }
             else if ((selectedShapeProperty == "width") && (selectedShapeType == "rect")) {
 
-                shape = paper.rect().attr({
-                    x: tempshapeBBox.x, 
-                    y: tempshapeBBox.y + (i * (tempshapeBBox.height + 2)),
+                shape = visarea.rect().attr({
+                    x: 2, 
+                    y: 2 + (i * (tempshapeBBox.height + 2)),
                     width: data[i],
                     height: tempshapeBBox.height,
                     fill: "orange"
                 });
 
-                shape.click(function () {
-                    currShape = shape;
-                    selectedShapeType = "rect";
-                    document.getElementById("rect-radio").checked = true;
-                });
+                //shape.click(function () {
+                //    currShape = shape;
+                //    selectedShapeType = "rect";
+                //    document.getElementById("rect-radio").checked = true;
+                //});
 
                 tempshape = shape;
             }
             else if ((selectedShapeProperty == "radius") && (selectedShapeType == "circle"))
             {
-                shape = paper.circle().attr({
+                shape = visarea.circle().attr({
                     cx: tempshapeBBox.x2 + parseInt(data[i]),
                     cy: tempshapeBBox.y + tempshapeBBox.height / 2,
                     r: data[i],
                     fill: "blue"
                 });
                 
-                shape.click(function () {
-                    currShape = shape;
-                    selectedShapeType = "circle";
-                    document.getElementById("circle-radio").checked = true;
-                });
+                //shape.click(function () {
+                //    currShape = shape;
+                //    selectedShapeType = "circle";
+                //    document.getElementById("circle-radio").checked = true;
+                //});
 
                 tempshape = shape;
                 tempshapeBBox = tempshape.getBBox();//update bounding box
@@ -186,13 +184,13 @@ function cloneByColumnStatic(data) {
                 var y2 = a + startpoint.y;
 
                 var pathString = 'M' + startpoint.x + ',' + startpoint.y + 'L' + x2 + ',' + y2 + 'Z';
-                shape = paper.path(pathString);
+                shape = visarea.path(pathString);
 
-                shape.click(function () {
-                    currShape = shape;
-                    selectedShapeType = "line";
-                    document.getElementById("line-radio").checked = true;
-                });
+                //shape.click(function () {
+                //    currShape = shape;
+                //    selectedShapeType = "line";
+                //    document.getElementById("line-radio").checked = true;
+                //});
 
                 tempshape = shape;
             }
@@ -208,7 +206,7 @@ function cloneByColumnStatic(data) {
                 var y1 = -(len * Math.sin(teta)) + (offsetPoint.y);
 
                 var pathString = 'M' + (x1) + ',' + (y1) + 'L' + (x2) + ',' + (y2) + 'Z';
-                shape = paper.path(pathString);
+                shape = visarea.path(pathString);
 
                 shape.click(function () {
                     currShape = shape;
@@ -268,6 +266,10 @@ function cloneByColumnStatic(data) {
     //console.log(data);
 }
 
+function cloneByColumnAnimated(data)
+{
+
+}
 
 function collectSelectedProperties()
 {
@@ -348,6 +350,11 @@ function clearCanvas()
     //selectedShapeType = "rect";
     //selectedShapeProperty = "";
     //currShape = "";
+}
+
+function clearVisualization()
+{
+    visarea.clear();
 }
 
 
