@@ -236,7 +236,9 @@ function cloneByColumnStatic(data) {
 
             if ((isPropertySelected("ccwrotate"))) {
 
-                shape = tempshape.clone();
+                //clone shape on visualization canvas
+                shape = visarea[tempshape.type]().attr(tempshape.attr());
+                
                 shape.transform("...r" + (-data[i]));
 
                 shape.click(function () {
@@ -247,9 +249,10 @@ function cloneByColumnStatic(data) {
 
             if (isPropertySelected("cwrotate")) {
 
-                shape = tempshape.clone();
-                shape.transform("...r" + (data[i]));
+                //shape = tempshape.clone();
+                shape = visarea[tempshape.type]().attr(tempshape.attr());
 
+                shape.transform("...r" + (data[i]));
                 shape.click(function () {
                     currShape = shape;
                 });
@@ -258,7 +261,8 @@ function cloneByColumnStatic(data) {
 
             if (isPropertySelected("movex")) {
 
-                shape = tempshape.clone();
+                shape = visarea[tempshape.type]().attr(tempshape.attr());
+
                 shape.transform("...t" + (data[i])+",0");
 
                 shape.click(function () {
@@ -269,7 +273,7 @@ function cloneByColumnStatic(data) {
 
             if (isPropertySelected("movey")) {
 
-                shape = tempshape.clone();
+                shape = visarea[tempshape.type]().attr(tempshape.attr());
                 shape.transform("...t0," + (data[i]));
 
                 shape.click(function () {
@@ -277,10 +281,6 @@ function cloneByColumnStatic(data) {
                 });
 
             }
-//            else
-  //          {
-    //            console.log("Combination of "+ selectedShapeType + " and " + selectedShapeProperty + " has not been implemented!");
-      //      }
         }
     }
 
